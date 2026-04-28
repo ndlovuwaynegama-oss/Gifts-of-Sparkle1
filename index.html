@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1220">
   <title>Gifts of Sparkle | Premium Cleaning Northern Ireland</title>
-  <!-- Google Fonts + Font Awesome 6 -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -15,605 +17,528 @@
     }
 
     :root {
-      --navy: #0a2b44;
+      --navy: #08111f;
       --gold: #d9b86c;
-      --gold-light: #f3e1b3;
-      --cream: #fefaf5;
-      --white: #ffffff;
-      --text-dark: #1e2f3e;
-      --text-muted: #5b6e7c;
-      --glass-bg: rgba(255, 255, 255, 0.65);
-      --glass-border: rgba(255, 255, 255, 0.5);
-      --shadow-sm: 0 15px 35px rgba(0, 0, 0, 0.05);
-      --shadow-lg: 0 25px 45px -12px rgba(0, 0, 0, 0.15);
-      --transition: all 0.3s ease;
-      --card-radius: 2rem;
-      --bg-gradient: linear-gradient(145deg, #ffffff 0%, #fef7ed 100%);
-    }
-
-    body.dark {
-      --navy: #c9e9ff;
-      --gold: #e4c483;
-      --cream: #121212;
-      --white: #1e1e2f;
-      --text-dark: #eef2f5;
-      --text-muted: #b0c4de;
-      --glass-bg: rgba(30, 30, 47, 0.75);
-      --glass-border: rgba(255, 215, 150, 0.25);
-      --bg-gradient: linear-gradient(145deg, #121212 0%, #1a1a2a 100%);
-      background: #121212;
+      --gold2: #f3d89b;
+      --text: #eaf0f8;
+      --muted: #94a3b8;
+      --card: rgba(255, 255, 255, 0.06);
+      --line: rgba(255, 255, 255, 0.08);
+      --radius: 28px;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-dark);
-      transition: background 0.2s, color 0.2s;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
+      background: radial-gradient(circle at 10% 10%, rgba(217, 184, 108, 0.12), transparent 25%),
+                  radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.04), transparent 20%),
+                  linear-gradient(140deg, #08111f, #050913 60%, #0d1629);
+      color: var(--text);
+      min-height: 100vh;
     }
 
-    /* glassmorphism bento cards */
-    .bento-card, .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(14px);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--card-radius);
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      padding: 1.8rem;
-    }
-
-    .bento-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--gold);
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* header & nav */
+    .container { max-width: 1320px; margin: auto; padding: 0 28px; }
+    
+    /* Header & Navigation */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      transition: 0.2s;
+      background: rgba(8, 17, 31, 0.85);
+      border-bottom: 1px solid var(--line);
     }
-    body.dark header {
-      background: rgba(18, 18, 30, 0.9);
-    }
-    .nav-bar {
+    .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 0;
+      padding: 16px 0;
+      gap: 24px;
       flex-wrap: wrap;
-      gap: 1rem;
     }
-    .logo h1 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--navy), var(--gold));
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .nav-links {
+    .logo {
       display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
       align-items: center;
+      gap: 14px;
+      cursor: pointer;
     }
-    .nav-links a {
-      text-decoration: none;
+    .logo-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      color: #0a1222;
+      font-weight: 900;
+      box-shadow: 0 10px 20px rgba(217, 184, 108, 0.3);
+    }
+    .logo h1 { font-size: 1.2rem; font-weight: 800; }
+    .logo small { display: block; font-size: 0.7rem; color: var(--muted); }
+    
+    /* Desktop menu */
+    .menu {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .menu a {
+      font-size: 0.95rem;
       font-weight: 600;
-      color: var(--text-dark);
+      color: #dbe6f5;
       transition: 0.2s;
       cursor: pointer;
+      text-decoration: none;
+      padding-bottom: 4px;
     }
-    .nav-links a:hover, .nav-links a.active-nav { color: var(--gold); border-bottom: 2px solid var(--gold); }
-    .dark-toggle {
-      background: var(--glass-bg);
-      border: none;
-      border-radius: 60px;
-      padding: 8px 12px;
+    .menu a:hover, .menu a.active-nav { color: var(--gold); border-bottom: 2px solid var(--gold); }
+    
+    /* Mobile menu button & overlay */
+    .mobile-menu-btn {
+      display: none;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 14px;
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      color: var(--gold);
     }
-
-    /* buttons */
-    .btn-gold {
-      background: linear-gradient(105deg, var(--gold), #c6a245);
-      border: none;
-      padding: 12px 28px;
-      border-radius: 60px;
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(8, 17, 31, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 200;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #1e2a36;
+      color: white;
+      text-decoration: none;
       cursor: pointer;
-      transition: 0.2s;
+    }
+    .mobile-menu a:hover, .mobile-menu a.active-nav-mobile { color: var(--gold); }
+    .close-menu {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--gold);
+    }
+    
+    .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s;
+      cursor: pointer;
+      border: none;
       gap: 8px;
     }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #0a1222;
+      box-shadow: 0 8px 20px rgba(217, 184, 108, 0.3);
+    }
     .btn-outline {
-      background: transparent;
-      border: 1.5px solid var(--gold);
-      padding: 10px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+    }
+    
+    /* PAGE SECTIONS – only homepage active on load */
+    .page-section { display: none; animation: fadeSlideUp 0.45s ease; }
+    .page-section.active-section { display: block; }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Homepage specific */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 48px;
+      align-items: start;
+      padding: 60px 0 40px;
+    }
+    .hero-left .kicker {
+      display: inline-block;
+      padding: 6px 16px;
+      border: 1px solid rgba(217, 184, 108, 0.4);
+      background: rgba(217, 184, 108, 0.1);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold2);
+      margin-bottom: 24px;
+    }
+    .hero-left h1 {
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+    .hero-left h1 span {
+      background: linear-gradient(135deg, var(--gold), #fff0c4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-left p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #b7c3d7;
+      margin-bottom: 28px;
+    }
+    
+    /* Quote card */
+    .quote-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      backdrop-filter: blur(8px);
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--gold2);
+    }
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      outline: none;
+      cursor: pointer;
+    }
+    .price-preview {
+      background: linear-gradient(135deg, rgba(217, 184, 108, 0.15), rgba(255, 255, 255, 0.02));
+      border-radius: 24px;
+      padding: 20px;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .price-live { font-size: 3rem; font-weight: 900; color: var(--gold2); }
+    
+    /* Trust bar */
+    .trust-bar {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin: 20px 0;
+    }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; }
+    .trust-item i { color: var(--gold); }
+    
+    /* Shared card styles */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+    .glass-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px;
+      transition: 0.25s;
+    }
+    .glass-card:hover { transform: translateY(-6px); border-color: rgba(217, 184, 108, 0.5); }
+    .popular-card { border: 2px solid var(--gold); position: relative; }
+    .badge-pop {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--gold);
+      color: #0a1222;
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+    .price-large { font-size: 2rem; font-weight: 800; margin-top: 16px; color: var(--gold2); }
+    .area-pill {
+      background: rgba(217, 184, 108, 0.12);
+      border: 1px solid rgba(217, 184, 108, 0.3);
+      padding: 12px 24px;
       border-radius: 60px;
       font-weight: 600;
+      display: inline-block;
+      margin: 8px;
     }
-
-    /* Sticky Mobile CTA */
-    .mobile-cta {
+    .section-title { font-size: 2rem; font-weight: 800; margin: 40px 0 20px; }
+    .cta-block {
+      background: linear-gradient(135deg, rgba(217, 184, 108, 0.12), rgba(255, 255, 255, 0.02));
+      border-radius: 32px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 50px 0;
+    }
+    
+    /* Mobile sticky buttons */
+    .mobile-sticky {
+      display: none;
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
-      background: rgba(10, 43, 68, 0.92);
-      backdrop-filter: blur(24px);
-      display: flex;
-      justify-content: space-around;
+      background: rgba(8, 17, 31, 0.96);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--line);
       padding: 12px 20px;
       z-index: 200;
-      border-top: 1px solid var(--gold);
-      transform: translateY(100%);
-      transition: transform 0.3s;
-    }
-    .mobile-cta.show {
-      transform: translateY(0);
-    }
-    .cta-btn {
-      background: none;
-      border: none;
-      color: white;
-      font-weight: 600;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.75rem;
-      text-decoration: none;
-    }
-    .cta-btn i { font-size: 1.6rem; color: var(--gold); }
-
-    /* exit intent modal */
-    .exit-modal {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      background: var(--white);
-      backdrop-filter: blur(20px);
-      border-radius: 28px;
-      padding: 1.6rem;
-      max-width: 380px;
-      width: 90%;
-      z-index: 1000;
-      box-shadow: 0 20px 35px rgba(0,0,0,0.2);
-      border: 1px solid var(--gold);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.2s;
-      text-align: center;
-    }
-    .exit-modal.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) scale(1);
-    }
-
-    /* grid bento layouts */
-    .grid-bento {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-    .grid-bento-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .review-slider {
-      overflow: hidden;
-      position: relative;
-    }
-    .review-track {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-    .review-card {
-      min-width: 100%;
-      padding: 1rem;
-    }
-    .before-after-grid {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+      gap: 12px;
       justify-content: center;
     }
-    .ba-img {
-      flex: 1;
-      min-width: 180px;
-      border-radius: 28px;
-      overflow: hidden;
-      height: 220px;
-      background-size: cover;
-      background-position: center;
-    }
-    .team-flex {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .team-member {
-      text-align: center;
-      width: 120px;
-    }
-    .team-member img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--gold);
-    }
-    .counter-item {
-      text-align: center;
-    }
-    .counter-number {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: var(--gold);
-    }
-    .faq-question {
-      background: var(--glass-bg);
-      border-radius: 60px;
-      padding: 1rem 1.5rem;
-      margin: 0.6rem 0;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: 0.2s;
-      padding: 0 1.2rem;
-    }
-    .faq-question.active + .faq-answer {
-      max-height: 200px;
-      padding-bottom: 1rem;
-    }
-    .sparkle {
-      position: fixed;
-      pointer-events: none;
-      font-size: 1rem;
-      z-index: 9999;
-      animation: fadeOut 0.6s forwards;
-    }
-    @keyframes fadeOut { to { opacity: 0; transform: scale(0.5); } }
+    .mobile-sticky .btn { flex: 1; }
+    footer { text-align: center; padding: 40px 0 80px; font-size: 0.85rem; color: var(--muted); }
     
-    /* Page section visibility: only homepage visible initially */
-    .page-section {
-      display: none;
-      animation: fadeSlideUp 0.5s ease;
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .cta-block { grid-template-columns: 1fr; }
     }
-    .page-section.active-section {
-      display: block;
-    }
-    @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    section { scroll-margin-top: 90px; margin: 3rem 0; }
-    footer { text-align: center; padding: 2rem; border-top: 1px solid rgba(0,0,0,0.1); margin-top: 2rem; }
-    
-    @media (max-width: 780px) { 
-      .container { padding: 0 18px; } 
-      .nav-links { gap: 0.8rem; }
-      .logo h1 { font-size: 1.4rem; }
-      .grid-bento, .grid-bento-2 { gap: 1.2rem; }
-      .bento-card { padding: 1.2rem; }
-      .counter-number { font-size: 2rem; }
-      .btn-gold, .btn-outline { padding: 8px 18px; font-size: 0.9rem; }
-    }
-    @media (max-width: 480px) {
-      .hero-title { font-size: 2.2rem; }
-      .nav-links { gap: 0.5rem; font-size: 0.8rem; }
+    @media (max-width: 760px) {
+      .menu { display: none; }
+      .mobile-menu-btn { display: block; }
+      .mobile-sticky { display: flex; }
+      .container { padding: 0 20px; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="container nav-bar">
-    <div class="logo"><h1>✨ Gifts of Sparkle</h1><span style="font-size: 12px; letter-spacing: 1px;">PROFESSIONAL CLEANING • NI</span></div>
-    <div class="nav-links" id="navLinks">
-      <a data-section="home">Home</a>
-      <a data-section="quote">Instant Quote</a>
-      <a data-section="packages">Packages</a>
-      <a data-section="reviews">Reviews</a>
-      <a data-section="gallery">Gallery</a>
-      <a data-section="faq">FAQ</a>
-      <a data-section="contact">Contact</a>
-      <button class="dark-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
-      <a data-section="quote" class="btn-gold" style="padding:6px 18px;">Book Now</a>
+  <div class="container nav">
+    <div class="logo" data-section="home">
+      <div class="logo-badge">✨</div>
+      <div><h1>Gifts of Sparkle</h1><small>Premium Cleaning • NI</small></div>
     </div>
+    <div class="menu">
+      <a data-section="home">Home</a>
+      <a data-section="packages">Smart Cleaning Packages</a>
+      <a data-section="areas">Areas We Serve</a>
+      <a data-section="contact">Contact</a>
+      <a data-section="quote" class="btn btn-gold" style="padding:8px 22px;">Book Now</a>
+    </div>
+    <div class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></div>
+    <a data-section="home">Home</a>
+    <a data-section="packages">Smart Cleaning Packages</a>
+    <a data-section="areas">Areas We Serve</a>
+    <a data-section="contact">Contact</a>
+    <a data-section="quote" class="btn btn-gold" style="margin-top: 20px;">Book Now</a>
   </div>
 </header>
 
-<main class="container">
-  <!-- ==================== HOMEPAGE SECTION (visible by default) ==================== -->
+<main>
+  <!-- HOMEPAGE (visible on load) -->
   <div id="homeSection" class="page-section active-section">
-    <section style="margin-top: 2rem;">
-      <div class="grid-bento-2" style="align-items: center;">
-        <div>
-          <span style="background: var(--gold-light); padding: 0.2rem 1rem; border-radius: 60px; font-weight: 700;">⭐ Trusted Across Northern Ireland</span>
-          <h1 style="font-size: 3.2rem; margin: 1rem 0;">Exceptional Care.<br><span style="color: var(--gold);">Pristine Results.</span></h1>
-          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Book in 60 seconds. Instant quotes. Fully insured local cleaners.</p>
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a class="btn-gold" data-section="quote" style="cursor:pointer;"><i class="fas fa-calculator"></i> Get Instant Quote</a>
-            <a href="https://wa.me/447721448758" class="btn-outline" style="text-decoration: none;"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
-          </div>
-          <div style="margin-top: 1.5rem;"><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i> <strong>4.98 ★</strong> (280+ reviews)</div>
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <div class="kicker">✨ Trusted • Insured • 5-Star Service</div>
+        <h1>Luxury Cleaning That <span>Wins Back Your Time</span></h1>
+        <p>Modern homeowners & businesses choose Gifts of Sparkle for dependable, detail-driven cleaning with transparent pricing, fast booking, and premium results across Northern Ireland.</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a data-section="quote" class="btn btn-gold" style="cursor:pointer;"><i class="fas fa-calculator"></i> Instant Quote</a>
+          <a data-section="packages" class="btn btn-outline" style="cursor:pointer;">View Packages</a>
         </div>
-        <div class="bento-card" style="min-height: 280px; background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop'); background-size: cover; background-position: center;"></div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ==================== OTHER SECTIONS (hidden initially) ==================== -->
-  <div id="quoteSection" class="page-section">
-    <section>
-      <div class="bento-card" style="text-align: center;">
-        <h2><i class="fas fa-bolt"></i> AI Smart Quote — Live Price</h2>
-        <div class="grid-bento-2" style="margin-top: 1rem;">
-          <div>
-            <label>📍 Area (NI)</label>
-            <select id="quoteArea" style="width:100%; padding:12px; border-radius:40px;"><option>Belfast</option><option>Armagh</option><option>Derry</option><option>Lisburn</option><option>Newry</option></select>
-            <label>🏠 Home Size</label>
-            <select id="quoteSize"><option value="flat">Flat / Apartment</option><option value="small">Small House</option><option value="medium">Medium House</option><option value="large">Large House</option></select>
-            <label>🧼 Clean Type</label>
-            <select id="quoteType"><option value="basic">Maintenance Clean</option><option value="regular" selected>Regular Clean</option><option value="deep">Deep Clean</option></select>
-            <label>✨ Add-on</label>
-            <select id="quoteAddon"><option value="0">None</option><option value="35">Inside Oven (+£35)</option><option value="20">Fridge Clean (+£20)</option><option value="25">Inside Windows (+£25)</option></select>
-            <label>🔄 Frequency Discount</label>
-            <select id="quoteFreq"><option value="1">One-Off (0%)</option><option value="0.9">Weekly (10% off)</option><option value="0.95">Fortnightly (5% off)</option></select>
-          </div>
-          <div style="display: flex; flex-direction: column; justify-content: center;">
-            <div class="counter-number" id="liveQuotePrice" style="font-size: 3rem;">£0</div>
-            <p class="muted">Estimated total (incl. discounts)</p>
-            <button class="btn-gold" onclick="sendQuoteWhatsApp()"><i class="fab fa-whatsapp"></i> Book This Quote</button>
-          </div>
+        <div class="trust-bar">
+          <div class="trust-item"><i class="fas fa-shield-alt"></i> Fully Insured</div>
+          <div class="trust-item"><i class="fas fa-id-card"></i> DBS Checked</div>
+          <div class="trust-item"><i class="fas fa-leaf"></i> Eco Friendly</div>
+          <div class="trust-item"><i class="fas fa-star"></i> 5★ Rated</div>
+        </div>
+        <div class="cards-grid" style="margin-top: 20px;">
+          <div class="glass-card"><h3>280+</h3><p>Happy Homes</p></div>
+          <div class="glass-card"><h3>98%</h3><p>Repeat Clients</p></div>
+          <div class="glass-card"><h3>24/7</h3><p>WhatsApp Booking</p></div>
         </div>
       </div>
-    </section>
+      <div class="quote-card">
+        <h3><i class="fas fa-bolt" style="color: var(--gold);"></i> Smart Quote</h3>
+        <div class="form-group"><label>🏠 Property type</label><select id="quoteSize"><option value="45">Flat / Apartment</option><option value="60" selected>Small House</option><option value="80">Medium House</option><option value="100">Large House</option></select></div>
+        <div class="form-group"><label>🧼 Cleaning package</label><select id="quoteType"><option value="basic">Maintenance Clean</option><option value="regular" selected>Regular Clean</option><option value="deep">Deep Clean</option></select></div>
+        <div class="form-group"><label>✨ Add-on</label><select id="quoteAddon"><option value="0">None</option><option value="35">Oven +£35</option><option value="20">Fridge +£20</option><option value="25">Windows +£25</option></select></div>
+        <div class="form-group"><label>🔄 Frequency</label><select id="quoteFreq"><option value="1">One-Off</option><option value="0.9">Weekly -10%</option><option value="0.95">Fortnightly -5%</option></select></div>
+        <div class="price-preview"><div class="price-live" id="liveQuotePrice">£0</div><p>Estimated total</p></div>
+        <button class="btn btn-gold" style="width:100%" onclick="sendSmartBooking()"><i class="fab fa-whatsapp"></i> Book on WhatsApp</button>
+      </div>
+    </div>
   </div>
 
+  <!-- SMART CLEANING PACKAGES PAGE -->
   <div id="packagesSection" class="page-section">
-    <section><h2 style="margin-bottom: 1rem;">✨ Bento Cleaning Packages</h2>
-      <div class="grid-bento">
-        <div class="bento-card"><i class="fas fa-brush" style="font-size: 2rem; color: var(--gold);"></i><h3>Maintenance Clean</h3><p>Vacuum, mopping, dusting, bathroom wipe, kitchen surfaces.</p><div class="counter-number" style="font-size: 2rem;">From £45</div></div>
-        <div class="bento-card" style="border: 2px solid var(--gold);"><i class="fas fa-star-of-life"></i><h3>Regular Clean <span style="background: gold; color:black; padding: 0px 8px; border-radius:60px;">popular</span></h3><p>All basic + sanitising, mirrors, deep dusting, kitchen fronts.</p><div class="counter-number" style="font-size: 2rem;">From £60</div></div>
-        <div class="bento-card"><i class="fas fa-spray-can-sparkles"></i><h3>Deep Clean</h3><p>Grease removal, skirting, doors, intensive kitchen & bathroom.</p><div class="counter-number" style="font-size: 2rem;">From £120</div></div>
+    <div class="container">
+      <h2 class="section-title">✨ Smart Cleaning Packages</h2>
+      <div class="cards-grid">
+        <div class="glass-card"><h3>Basic Clean</h3><ul style="margin:16px 0 0 20px;"><li>Vacuum & mopping</li><li>Bathroom refresh</li><li>Kitchen surfaces</li><li>Dusting</li></ul><div class="price-large">£45</div></div>
+        <div class="glass-card popular-card"><span class="badge-pop">⭐ Most Popular</span><h3>Regular Clean</h3><ul style="margin:16px 0 0 20px;"><li>Everything in Basic</li><li>Full sanitising</li><li>Mirrors polished</li><li>Kitchen fronts</li></ul><div class="price-large">£60</div></div>
+        <div class="glass-card"><h3>Deep Clean</h3><ul style="margin:16px 0 0 20px;"><li>Everything in Regular</li><li>Grease removal</li><li>Skirting & frames</li><li>Detailed kitchen</li></ul><div class="price-large">£120</div></div>
       </div>
-      <div class="grid-bento">
-        <div class="bento-card"><h3>🏢 Commercial Cleaning</h3><p>Offices from £18/h | Shops & salons custom plans.</p></div>
-        <div class="bento-card"><h3>➕ Power Add-ons</h3><p>Oven £35 • Fridge £20 • Windows inside £25 • Ironing £18/hr</p></div>
-        <div class="bento-card"><h3>🔄 Frequency savings</h3><p>Weekly -10% • Fortnightly -5% • Monthly standard</p></div>
+      <div class="cards-grid"><div class="glass-card"><h3>🏢 Commercial</h3><p>Offices from £18/hr | Retail & salons</p></div><div class="glass-card"><h3>➕ Add-ons</h3><p>Oven £35 • Fridge £20 • Windows £25</p></div><div class="glass-card"><h3>🔄 Discounts</h3><p>Weekly -10% • Fortnightly -5%</p></div></div>
+      <div class="reviews-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; margin-top:40px;">
+        <div class="glass-card"><div class="stars" style="color:#fbbf24;">★★★★★</div><p>"Absolutely spotless. Professional and worth every pound."<br>— Sarah, Belfast</p></div>
+        <div class="glass-card"><div class="stars" style="color:#fbbf24;">★★★★★</div><p>"Deep clean transformed our home. Instant booking is genius."<br>— David, Armagh</p></div>
       </div>
-    </section>
+    </div>
   </div>
 
-  <div id="reviewsSection" class="page-section">
-    <section><h2>💬 Loved by Local Clients</h2>
-      <div class="review-slider bento-card" style="overflow: hidden;">
-        <div class="review-track" id="reviewTrack">
-          <div class="review-card"><i class="fas fa-quote-left" style="color:var(--gold);"></i><p>"Absolutely sparkling clean! The team was punctual and friendly. Best cleaners in Belfast." — Sarah M.</p><span>⭐⭐⭐⭐⭐</span></div>
-          <div class="review-card"><i class="fas fa-quote-left" style="color:var(--gold);"></i><p>"Deep cleaned our whole house, felt brand new. Highly recommend Gifts of Sparkle!" — David K.</p><span>⭐⭐⭐⭐⭐</span></div>
-          <div class="review-card"><i class="fas fa-quote-left" style="color:var(--gold);"></i><p>"Professional, thorough, eco-friendly products. Will book weekly." — Emma R.</p><span>⭐⭐⭐⭐⭐</span></div>
-        </div>
+  <!-- AREAS WE SERVE PAGE -->
+  <div id="areasSection" class="page-section">
+    <div class="container">
+      <h2 class="section-title">📍 Areas We Serve Across Northern Ireland</h2>
+      <p style="font-size:1.1rem; margin-bottom:20px;">Proudly providing premium cleaning to homes and businesses throughout NI.</p>
+      <div style="margin-bottom:30px;">
+        <span class="area-pill">Belfast</span> <span class="area-pill">Lisburn</span> <span class="area-pill">Armagh</span> <span class="area-pill">Derry~Londonderry</span>
+        <span class="area-pill">Newry</span> <span class="area-pill">Bangor</span> <span class="area-pill">Ballymena</span> <span class="area-pill">Craigavon</span>
+        <span class="area-pill">Coleraine</span> <span class="area-pill">Enniskillen</span> <span class="area-pill">Omagh</span> <span class="area-pill">Downpatrick</span>
       </div>
-    </section>
+      <div class="glass-card" style="text-align:center;">
+        <i class="fas fa-map-marker-alt" style="font-size:2rem; color:var(--gold);"></i>
+        <h3>Covering all of Northern Ireland</h3>
+        <p>Even if your town isn't listed, contact us — we travel across NI to deliver sparkling results.</p>
+        <a data-section="contact" class="btn btn-gold" style="margin-top:16px; cursor:pointer;">Get a Quote for Your Area</a>
+      </div>
+    </div>
   </div>
 
-  <div id="gallerySection" class="page-section">
-    <section><h2>📸 Before / After — Real Results</h2>
-      <div class="before-after-grid">
-        <div class="ba-img" style="background-image: url('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=400&h=250&fit=crop');"><div style="background:rgba(0,0,0,0.4); color:white; padding:8px;">Before</div></div>
-        <div class="ba-img" style="background-image: url('https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=400&h=250&fit=crop');"><div style="background:rgba(0,0,0,0.4); color:white; padding:8px;">After ✨</div></div>
-        <div class="ba-img" style="background-image: url('https://images.unsplash.com/photo-1574182245530-967d9b3839e8?w=400&h=250&fit=crop');"><div style="background:rgba(0,0,0,0.4); color:white; padding:8px;">Kitchen Revival</div></div>
-      </div>
-      <div class="grid-bento-2" style="margin-top:2rem">
-        <div class="bento-card"><h3><i class="fas fa-shield-alt"></i> Trust Badges</h3><div style="display:flex; flex-wrap:wrap; gap:12px;"><span>✔️ Fully Insured</span><span>✔️ DBS Checked</span><span>✔️ Eco Friendly</span><span>✔️ 100% Guarantee</span></div></div>
-        <div class="bento-card"><h3><i class="fas fa-users"></i> Meet Our Team</h3><div class="team-flex"><div class="team-member"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="team"><p>Bertha</p></div><div class="team-member"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="team"><p>James</p></div><div class="team-member"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="team"><p>Sarah</p></div></div></div>
-      </div>
-    </section>
-  </div>
-
-  <div id="faqSection" class="page-section">
-    <section><h2>❓ Frequently Asked Questions</h2>
-      <div class="bento-card">
-        <div class="faq-question">Do you bring your own equipment & supplies? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Yes, we bring eco-friendly products and professional equipment, unless you prefer specific items.</div>
-        <div class="faq-question">How long does a standard clean take? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Typically 1.5 to 3 hours depending on property size. Deep cleans take longer.</div>
-        <div class="faq-question">Are you fully insured? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Absolutely – public liability & insurance coverage for your peace of mind.</div>
-        <div class="faq-question">What areas do you cover? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">All Northern Ireland including Belfast, Armagh, Derry, Lisburn, Newry, Bangor, and more.</div>
-      </div>
-    </section>
-  </div>
-
+  <!-- CONTACT PAGE -->
   <div id="contactSection" class="page-section">
-    <section><div class="grid-bento-2">
-        <div class="bento-card"><h3>📧 Get Cleaning Tips + 10% Off</h3><p>Subscribe for exclusive deals & sparkle secrets.</p><input type="email" id="subEmail" placeholder="Your best email" style="width:100%; padding:12px; border-radius: 60px; margin:10px 0;"><button class="btn-gold" onclick="subscribeEmail()">Subscribe →</button></div>
-        <div class="bento-card"><h3>📅 Request a Date</h3><input type="date" id="bookingDate" style="width:100%; padding:12px; border-radius:60px;"><button class="btn-gold" onclick="requestBookingDate()">Request Booking</button><p class="muted" style="margin-top: 12px;">📞 0772 144 8758 | <i class="fab fa-whatsapp"></i> WhatsApp</p></div>
+    <div class="container">
+      <div class="cta-block">
+        <div><h3 style="font-size:1.8rem; font-weight:800;">Ready for a sparkling clean space?</h3><p style="margin:15px 0;">Evening & weekend slots • Free quotes • Insured team</p><div style="display:flex; gap:12px;"><a href="https://wa.me/447721448758" class="btn btn-gold"><i class="fab fa-whatsapp"></i> WhatsApp Us</a><a href="tel:07721448758" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a></div></div>
+        <div class="glass-card"><h4>📞 Contact Details</h4><p style="margin:10px 0;"><i class="fas fa-envelope" style="color:var(--gold); width:28px;"></i> info@giftsofsparkle.co.uk</p><p style="margin:10px 0;"><i class="fab fa-whatsapp" style="color:var(--gold); width:28px;"></i> 0772 144 8758</p><p style="margin:10px 0;"><i class="fas fa-phone-alt" style="color:var(--gold); width:28px;"></i> 0772 144 8758</p><p style="margin:10px 0;"><i class="fas fa-map-marker-alt" style="color:var(--gold); width:28px;"></i> All Northern Ireland</p><hr style="border-color:var(--line); margin:16px 0;"><p>Mon-Sat: 8am–8pm | Sun: By appointment</p></div>
       </div>
-      <div class="bento-card" style="margin-top: 1rem;"><p><strong>📍 Areas we serve:</strong> Belfast • Lisburn • Armagh • Derry~Londonderry • Newry • Bangor • Ballymena • whole Northern Ireland</p><p>📧 info@giftsofsparkle.co.uk | bookings@giftsofsparkle.co.uk</p></div>
-    </section>
+    </div>
   </div>
-
-  <!-- Animated counters appear inside home and packages, but we keep them global, they will animate when section becomes visible -->
-  <div style="display: none;" id="counterTrigger"></div>
 </main>
 
-<footer>
-  <p>© 2026 Gifts of Sparkle — Exceptional Care. Pristine Results. | Fully Licensed & Insured</p>
+<footer class="container">
+  © 2026 Gifts of Sparkle — Premium Cleaning Northern Ireland • Fully Insured & DBS Certified
 </footer>
 
-<!-- sticky mobile cta -->
-<div class="mobile-cta" id="mobileCta">
-  <a href="tel:07721448758" class="cta-btn"><i class="fas fa-phone-alt"></i><span>Call</span></a>
-  <a href="https://wa.me/447721448758" class="cta-btn"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
-  <a class="cta-btn" data-section="quote" style="cursor:pointer;"><i class="fas fa-calendar-check"></i><span>Book</span></a>
-</div>
-
-<!-- exit intent modal -->
-<div id="exitModal" class="exit-modal">
-  <i class="fas fa-gem" style="font-size: 32px; color: var(--gold);"></i>
-  <h3>Wait! 10% OFF your first clean ✨</h3>
-  <p>Book today and get a sparkling discount.</p>
-  <button class="btn-gold" onclick="applyExitOffer()">Get 10% Off →</button>
-  <button style="margin-top: 8px; background: none; border: none;" onclick="closeExitModal()">No thanks</button>
+<div class="mobile-sticky">
+  <a href="tel:07721448758" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Call</a>
+  <a href="https://wa.me/447721448758" class="btn btn-gold"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  <a data-section="quote" class="btn btn-gold" style="cursor:pointer;">Quote</a>
 </div>
 
 <script>
-  // --------------------------------------------------------------
-  // 1. SECTION TOGGLING: only homepage visible initially, nav shows others
-  // --------------------------------------------------------------
+  // ---------- Quote calculator ----------
+  const priceMap = {
+    basic: {45:45,60:60,80:75,100:95},
+    regular: {45:60,60:80,80:95,100:120},
+    deep: {45:120,60:160,80:220,100:280}
+  };
+  function updateQuote() {
+    let size = parseFloat(document.getElementById('quoteSize').value);
+    let type = document.getElementById('quoteType').value;
+    let addon = parseFloat(document.getElementById('quoteAddon').value) || 0;
+    let freq = parseFloat(document.getElementById('quoteFreq').value) || 1;
+    let base = priceMap[type]?.[size] || 60;
+    let total = Math.round((base + addon) * freq);
+    document.getElementById('liveQuotePrice').innerText = '£' + total;
+  }
+  document.getElementById('quoteSize').addEventListener('change', updateQuote);
+  document.getElementById('quoteType').addEventListener('change', updateQuote);
+  document.getElementById('quoteAddon').addEventListener('change', updateQuote);
+  document.getElementById('quoteFreq').addEventListener('change', updateQuote);
+  updateQuote();
+
+  function sendSmartBooking() {
+    let sizeText = document.getElementById('quoteSize').options[document.getElementById('quoteSize').selectedIndex].text;
+    let typeText = document.getElementById('quoteType').options[document.getElementById('quoteType').selectedIndex].text;
+    let addonText = document.getElementById('quoteAddon').options[document.getElementById('quoteAddon').selectedIndex].text;
+    let price = document.getElementById('liveQuotePrice').innerText;
+    let msg = `Hello Gifts of Sparkle,\n\nI'd like to book:\n🏠 Property: ${sizeText}\n🧼 Package: ${typeText}\n✨ Add-on: ${addonText}\n💰 Estimated Price: ${price}\n\nPlease confirm availability.`;
+    window.open(`https://wa.me/447721448758?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  // ---------- SINGLE PAGE SWITCHING: only homepage visible at start ----------
   const sections = {
     home: document.getElementById('homeSection'),
-    quote: document.getElementById('quoteSection'),
     packages: document.getElementById('packagesSection'),
-    reviews: document.getElementById('reviewsSection'),
-    gallery: document.getElementById('gallerySection'),
-    faq: document.getElementById('faqSection'),
+    areas: document.getElementById('areasSection'),
     contact: document.getElementById('contactSection')
   };
 
   function showSection(sectionId) {
-    // hide all sections
     Object.values(sections).forEach(sec => { if(sec) sec.classList.remove('active-section'); });
-    if(sections[sectionId]) sections[sectionId].classList.add('active-section');
-    // update active nav style
-    document.querySelectorAll('.nav-links a[data-section]').forEach(link => {
-      if(link.getAttribute('data-section') === sectionId) link.classList.add('active-nav');
+    if (sectionId === 'quote') {
+      if(sections.home) sections.home.classList.add('active-section');
+      document.getElementById('homeSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (sections[sectionId]) {
+      sections[sectionId].classList.add('active-section');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // Update active nav styles
+    document.querySelectorAll('.menu a[data-section]').forEach(link => {
+      if (link.getAttribute('data-section') === sectionId) link.classList.add('active-nav');
       else link.classList.remove('active-nav');
     });
-    // trigger counters lazy when the section becomes visible (for counters inside packages or home)
-    if(sectionId === 'home' || sectionId === 'packages') startCountersIfNeeded();
+    document.querySelectorAll('.mobile-menu a[data-section]').forEach(link => {
+      if (link.getAttribute('data-section') === sectionId) link.classList.add('active-nav-mobile');
+      else link.classList.remove('active-nav-mobile');
+    });
+    document.getElementById('mobileMenu')?.classList.remove('active');
   }
 
-  // attach click to all nav links and any custom elements with data-section
-  document.querySelectorAll('[data-section]').forEach(el => {
+  // Attach click handlers to all nav links
+  document.querySelectorAll('.menu a[data-section], .mobile-menu a[data-section]').forEach(el => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
-      const sec = el.getAttribute('data-section');
-      if(sec && sections[sec]) showSection(sec);
-      else if(sec === 'quote') showSection('quote');
+      showSection(el.getAttribute('data-section'));
     });
   });
+  document.querySelectorAll('[data-section]').forEach(el => {
+    if (!el.closest('.menu') && !el.closest('.mobile-menu')) {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection(el.getAttribute('data-section'));
+      });
+    }
+  });
 
-  // ensure home active by default
+  // Mobile menu open/close
+  document.getElementById('mobileMenuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('active'));
+  document.getElementById('closeMenuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('active'));
+  document.getElementById('mobileMenu').addEventListener('click', (e) => { if (e.target === document.getElementById('mobileMenu')) document.getElementById('mobileMenu').classList.remove('active'); });
+
+  // Start with Home only
   showSection('home');
-
-  // --------------------------------------------------------------
-  // 2. QUOTE CALCULATOR
-  // --------------------------------------------------------------
-  const priceMap = {
-    flat: { basic: 45, regular: 60, deep: 120 },
-    small: { basic: 60, regular: 80, deep: 160 },
-    medium: { basic: 75, regular: 95, deep: 220 },
-    large: { basic: 95, regular: 120, deep: 280 }
-  };
-  function updateQuote() {
-    let size = document.getElementById('quoteSize').value;
-    let type = document.getElementById('quoteType').value;
-    let addon = parseFloat(document.getElementById('quoteAddon').value) || 0;
-    let freq = parseFloat(document.getElementById('quoteFreq').value) || 1;
-    let base = priceMap[size]?.[type] || 60;
-    let total = (base + addon) * freq;
-    document.getElementById('liveQuotePrice').innerText = `£${Math.round(total)}`;
-  }
-  document.getElementById('quoteSize')?.addEventListener('change', updateQuote);
-  document.getElementById('quoteType')?.addEventListener('change', updateQuote);
-  document.getElementById('quoteAddon')?.addEventListener('change', updateQuote);
-  document.getElementById('quoteFreq')?.addEventListener('change', updateQuote);
-  updateQuote();
-
-  function sendQuoteWhatsApp() {
-    let price = document.getElementById('liveQuotePrice').innerText;
-    let msg = `Hello Gifts of Sparkle, I'd like to book the cleaning for estimated ${price}. Please confirm.`;
-    window.open(`https://wa.me/447721448758?text=${encodeURIComponent(msg)}`, '_blank');
-  }
-  function subscribeEmail() { let email = document.getElementById('subEmail')?.value; if(email) alert(`Thanks ${email}! Check inbox for 10% code.`); else alert("Please enter email"); }
-  function requestBookingDate() { let d = document.getElementById('bookingDate')?.value; if(d) alert(`Request sent for ${d}. We'll contact you on WhatsApp.`); else alert("Select a date"); }
-  function applyExitOffer() { window.open('https://wa.me/447721448758?text=Hi! I want 10%% off first clean', '_blank'); closeExitModal(); }
-  function closeExitModal() { document.getElementById('exitModal').classList.remove('active'); }
-
-  // --------------------------------------------------------------
-  // 3. ANIMATED COUNTERS (run when visible)
-  // --------------------------------------------------------------
-  let countersStarted = false;
-  function startCountersIfNeeded() {
-    if(countersStarted) return;
-    const counters = document.querySelectorAll('.counter-number[data-count]');
-    if(counters.length === 0) return;
-    countersStarted = true;
-    counters.forEach(c => {
-      const target = parseInt(c.getAttribute('data-count'));
-      if (!c.innerText || c.innerText === '0') {
-        let current = 0;
-        const step = target / 40;
-        const update = () => {
-          current += step;
-          if (current < target) { c.innerText = Math.floor(current); requestAnimationFrame(update); }
-          else c.innerText = target;
-        };
-        update();
-      }
-    });
-  }
-  // trigger counters when home or packages become visible
-  const observerCount = new MutationObserver(() => {
-    if(sections.home.classList.contains('active-section') || sections.packages.classList.contains('active-section')) startCountersIfNeeded();
-  });
-  observerCount.observe(document.getElementById('homeSection'), { attributes: true, attributeFilter: ['class'] });
-  observerCount.observe(document.getElementById('packagesSection'), { attributes: true, attributeFilter: ['class'] });
-  startCountersIfNeeded(); // try anyway
-
-  // review slider auto
-  let idx = 0; const track = document.getElementById('reviewTrack'); const slides = document.querySelectorAll('.review-card');
-  if(track && slides.length) setInterval(() => { idx = (idx+1) % slides.length; track.style.transform = `translateX(-${idx*100}%)`; }, 4000);
-
-  // mobile cta
-  window.addEventListener('scroll', () => { const cta = document.getElementById('mobileCta'); if(window.innerWidth <= 800) cta.classList.add('show'); else cta.classList.remove('show'); });
-  if(window.innerWidth <= 800) document.getElementById('mobileCta').classList.add('show');
-
-  // exit intent
-  document.addEventListener('mouseleave', (e) => { if(e.clientY <= 0 && !localStorage.getItem('exitShown')) { localStorage.setItem('exitShown','true'); document.getElementById('exitModal').classList.add('active'); } });
-  // dark mode
-  const toggle = document.getElementById('darkModeToggle');
-  toggle.addEventListener('click', () => { document.body.classList.toggle('dark'); localStorage.setItem('darkMode', document.body.classList.contains('dark')); });
-  if(localStorage.getItem('darkMode') === 'true') document.body.classList.add('dark');
-
-  // sparkle cursor
-  document.addEventListener('mousemove', (e) => {
-    const spark = document.createElement('div'); spark.className = 'sparkle'; spark.innerHTML = '✨'; spark.style.left = e.pageX - 8 + 'px'; spark.style.top = e.pageY - 8 + 'px'; document.body.appendChild(spark);
-    setTimeout(() => spark.remove(), 500);
-  });
-
-  // FAQ accordion
-  document.querySelectorAll('.faq-question').forEach(q => { q.addEventListener('click', () => { q.classList.toggle('active'); }); });
 </script>
 </body>
 </html>
