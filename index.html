@@ -1,83 +1,564 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Gifts of Sparkle | Premium Cleaning Northern Ireland</title>
-<style>
-:root{--navy:#12335a;--gold:#d4af67;--cream:#f8f6f1;--white:#fff;--text:#233244;--muted:#667;--shadow:0 12px 30px rgba(0,0,0,.08)}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(180deg,#fff,#f8f6f1);color:var(--text)}header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);box-shadow:0 2px 12px rgba(0,0,0,.06);z-index:10}.wrap{max-width:1180px;margin:auto;padding:20px}.nav{display:flex;justify-content:space-between;align-items:center}.logo{font-size:26px;font-weight:800;color:var(--navy)}.sub{font-size:12px;color:var(--gold);letter-spacing:2px}.hero,.grid2,.grid3{display:grid;gap:24px}.hero{grid-template-columns:1.2fr .8fr;align-items:center;padding:30px 0}.grid2{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.card{background:var(--white);padding:24px;border-radius:22px;box-shadow:var(--shadow)}.gold{color:var(--gold)}h1,h2,h3{margin:0 0 12px}h1{font-size:52px;line-height:1.05}h2{font-size:36px;color:var(--navy);margin-top:20px}p{line-height:1.6}.muted{color:var(--muted)}.btn{display:inline-block;background:linear-gradient(135deg,var(--gold),#c89f54);color:#0a1f38;padding:14px 22px;border:none;border-radius:999px;font-weight:800;cursor:pointer;text-decoration:none}.pill{display:inline-block;padding:6px 12px;border-radius:999px;background:#eef3f8;color:var(--navy);font-size:13px;font-weight:700}.popular{border:2px solid var(--gold)}select,input{width:100%;padding:12px;margin:8px 0 14px;border:1px solid #ddd;border-radius:12px}.price{font-size:28px;font-weight:800;color:var(--navy)}footer{padding:35px;text-align:center;color:var(--muted)}ul{padding-left:18px;margin:10px 0}.heroimg{min-height:420px;border-radius:26px;background:linear-gradient(rgba(18,51,90,.15),rgba(18,51,90,.2)),url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80') center/cover}.center{text-align:center}.tag{background:#f4efe4;padding:8px 14px;border-radius:999px;display:inline-block;font-weight:700;color:#8a6a2a}.small{font-size:14px}@media(max-width:900px){.hero,.grid2{grid-template-columns:1fr}h1{font-size:40px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Gifts of Sparkle | Premium Cleaning Northern Ireland</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #0a2b44;
+      --gold: #d9b86c;
+      --gold-light: #f3e1b3;
+      --cream: #fefaf5;
+      --white: #ffffff;
+      --text-dark: #1e2f3e;
+      --text-muted: #5b6e7c;
+      --glass-bg: rgba(255, 255, 255, 0.65);
+      --glass-border: rgba(255, 255, 255, 0.5);
+      --shadow-sm: 0 15px 35px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 25px 45px -12px rgba(0, 0, 0, 0.15);
+      --transition: all 0.3s ease;
+      --card-radius: 2rem;
+      --bg-gradient: linear-gradient(145deg, #ffffff 0%, #fef7ed 100%);
+    }
+
+    body.dark {
+      --navy: #c9e9ff;
+      --gold: #e4c483;
+      --cream: #121212;
+      --white: #1e1e2f;
+      --text-dark: #eef2f5;
+      --text-muted: #b0c4de;
+      --glass-bg: rgba(30, 30, 47, 0.75);
+      --glass-border: rgba(255, 215, 150, 0.25);
+      --bg-gradient: linear-gradient(145deg, #121212 0%, #1a1a2a 100%);
+      background: #121212;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-dark);
+      transition: background 0.2s, color 0.2s;
+      scroll-behavior: smooth;
+    }
+
+    /* glassmorphism bento cards */
+    .bento-card, .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--card-radius);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      padding: 1.8rem;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--gold);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header & nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: 0.2s;
+    }
+    body.dark header {
+      background: rgba(18, 18, 30, 0.9);
+    }
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--navy), var(--gold));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .dark-toggle {
+      background: var(--glass-bg);
+      border: none;
+      border-radius: 60px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    /* buttons */
+    .btn-gold {
+      background: linear-gradient(105deg, var(--gold), #c6a245);
+      border: none;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 700;
+      color: #1e2a36;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+    }
+
+    /* Sticky Mobile CTA */
+    .mobile-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 43, 68, 0.92);
+      backdrop-filter: blur(24px);
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 20px;
+      z-index: 200;
+      border-top: 1px solid var(--gold);
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+    .mobile-cta.show {
+      transform: translateY(0);
+    }
+    .cta-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+    }
+    .cta-btn i { font-size: 1.6rem; color: var(--gold); }
+
+    /* exit intent modal */
+    .exit-modal {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      background: var(--white);
+      backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: 1.6rem;
+      max-width: 380px;
+      width: 90%;
+      z-index: 1000;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+      border: 1px solid var(--gold);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .exit-modal.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) scale(1);
+    }
+
+    /* grid bento layouts */
+    .grid-bento {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .grid-bento-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .review-slider {
+      overflow: hidden;
+      position: relative;
+    }
+    .review-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .review-card {
+      min-width: 100%;
+      padding: 1rem;
+    }
+    .before-after-grid {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .ba-img {
+      flex: 1;
+      border-radius: 28px;
+      overflow: hidden;
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+    }
+    .team-flex {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .team-member {
+      text-align: center;
+      width: 120px;
+    }
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+    }
+    .counter-item {
+      text-align: center;
+    }
+    .counter-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+    .faq-question {
+      background: var(--glass-bg);
+      border-radius: 60px;
+      padding: 1rem 1.5rem;
+      margin: 0.6rem 0;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: 0.2s;
+      padding: 0 1.2rem;
+    }
+    .faq-question.active + .faq-answer {
+      max-height: 200px;
+      padding-bottom: 1rem;
+    }
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1rem;
+      z-index: 9999;
+      animation: fadeOut 0.6s forwards;
+    }
+    @keyframes fadeOut { to { opacity: 0; transform: scale(0.5); } }
+    section { scroll-margin-top: 90px; margin: 4rem 0; }
+    footer { text-align: center; padding: 2rem; border-top: 1px solid rgba(0,0,0,0.1);}
+    @media (max-width: 780px) { .container { padding: 0 18px; } .nav-links { gap: 0.8rem; } }
+  </style>
 </head>
 <body>
-<header><div class='wrap nav'><div><div class='logo'>Gifts of Sparkle</div><div class='sub'>PROFESSIONAL CLEANING</div></div><div style='display:flex;gap:10px;flex-wrap:wrap;align-items:center'><a class='pill' href='#home'>Home</a><a class='pill' href='#packages'>Packages</a><a class='pill' href='#areas'>Areas</a><a class='pill' href='#contact'>Contact</a><a class='btn' href='#book'>Book Now</a></div></div></header>
-<div class='wrap'>
-<section class='hero' id='home'>
-<div>
-<span class='tag'>Trusted Across Northern Ireland</span>
-<h1>Exceptional Care.<br><span class='gold'>Pristine Results.</span></h1>
-<p class='muted'>Domestic and commercial cleaning with transparent pricing, smart packages, recurring discounts and instant mobile booking.</p>
-<p><a class='btn' href='#book'>Book in 60 Seconds</a></p>
+
+<header>
+  <div class="container nav-bar">
+    <div class="logo"><h1>✨ Gifts of Sparkle</h1><span style="font-size: 12px; letter-spacing: 1px;">PROFESSIONAL CLEANING • NI</span></div>
+    <div class="nav-links">
+      <a href="#home">Home</a><a href="#quote">Instant Quote</a><a href="#packages">Packages</a><a href="#reviews">Reviews</a><a href="#gallery">Gallery</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+      <button class="dark-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+      <a href="#book-now" class="btn-gold" style="padding:8px 20px;">Book Now</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- Hero Section -->
+  <section id="home" style="margin-top: 2rem;">
+    <div class="grid-bento-2" style="align-items: center;">
+      <div>
+        <span style="background: var(--gold-light); padding: 0.2rem 1rem; border-radius: 60px; font-weight: 700;">⭐ Trusted Across Northern Ireland</span>
+        <h1 style="font-size: 3.2rem; margin: 1rem 0;">Exceptional Care.<br><span style="color: var(--gold);">Pristine Results.</span></h1>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Book in 60 seconds. Instant quotes. Fully insured local cleaners.</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#quote" class="btn-gold"><i class="fas fa-calculator"></i> Get Instant Quote</a>
+          <a href="https://wa.me/447721448758" class="btn-outline" style="text-decoration: none;"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+        </div>
+        <div style="margin-top: 1.5rem;"><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i><i class="fas fa-star" style="color: var(--gold);"></i> <strong>4.98 ★</strong> (280+ reviews)</div>
+      </div>
+      <div class="bento-card" style="min-height: 280px; background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop'); background-size: cover; background-position: center;"></div>
+    </div>
+  </section>
+
+  <!-- Instant Quote Tool + Smart Pricing -->
+  <section id="quote">
+    <div class="bento-card" style="text-align: center;">
+      <h2><i class="fas fa-bolt"></i> AI Smart Quote — Live Price</h2>
+      <div class="grid-bento-2" style="margin-top: 1rem;">
+        <div>
+          <label>📍 Area (NI)</label>
+          <select id="quoteArea" style="width:100%; padding:12px; border-radius:40px;"><option>Belfast</option><option>Armagh</option><option>Derry</option><option>Lisburn</option><option>Newry</option></select>
+          <label>🏠 Home Size</label>
+          <select id="quoteSize"><option value="flat">Flat / Apartment</option><option value="small">Small House</option><option value="medium">Medium House</option><option value="large">Large House</option></select>
+          <label>🧼 Clean Type</label>
+          <select id="quoteType"><option value="basic">Maintenance Clean</option><option value="regular" selected>Regular Clean</option><option value="deep">Deep Clean</option></select>
+          <label>✨ Add-on</label>
+          <select id="quoteAddon"><option value="0">None</option><option value="35">Inside Oven (+£35)</option><option value="20">Fridge Clean (+£20)</option><option value="25">Inside Windows (+£25)</option></select>
+          <label>🔄 Frequency Discount</label>
+          <select id="quoteFreq"><option value="1">One-Off (0%)</option><option value="0.9">Weekly (10% off)</option><option value="0.95">Fortnightly (5% off)</option></select>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+          <div class="counter-number" id="liveQuotePrice" style="font-size: 3rem;">£0</div>
+          <p class="muted">Estimated total (incl. discounts)</p>
+          <button class="btn-gold" onclick="sendQuoteWhatsApp()"><i class="fab fa-whatsapp"></i> Book This Quote</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bento grid packages (Premium glassmorphism) -->
+  <section id="packages">
+    <h2 style="margin-bottom: 1rem;">✨ Bento Cleaning Packages</h2>
+    <div class="grid-bento">
+      <div class="bento-card"><i class="fas fa-brush" style="font-size: 2rem; color: var(--gold);"></i><h3>Maintenance Clean</h3><p>Vacuum, mopping, dusting, bathroom wipe, kitchen surfaces.</p><div class="counter-number" style="font-size: 2rem;">From £45</div></div>
+      <div class="bento-card" style="border: 2px solid var(--gold);"><i class="fas fa-star-of-life"></i><h3>Regular Clean <span style="background: gold; color:black; padding: 0px 8px; border-radius:60px;">popular</span></h3><p>All basic + sanitising, mirrors, deep dusting, kitchen fronts.</p><div class="counter-number" style="font-size: 2rem;">From £60</div></div>
+      <div class="bento-card"><i class="fas fa-spray-can-sparkles"></i><h3>Deep Clean</h3><p>Grease removal, skirting, doors, intensive kitchen & bathroom.</p><div class="counter-number" style="font-size: 2rem;">From £120</div></div>
+    </div>
+    <div class="grid-bento" style="margin-top: 1rem;">
+      <div class="bento-card"><h3>🏢 Commercial Cleaning</h3><p>Offices from £18/h | Shops & salons custom plans.</p></div>
+      <div class="bento-card"><h3>➕ Power Add-ons</h3><p>Oven £35 • Fridge £20 • Windows inside £25 • Ironing £18/hr</p></div>
+      <div class="bento-card"><h3>🔄 Frequency savings</h3><p>Weekly -10% • Fortnightly -5% • Monthly standard</p></div>
+    </div>
+  </section>
+
+  <!-- Trust: Reviews slider + Before/After + Badges + Team -->
+  <section id="reviews">
+    <h2>💬 Loved by Local Clients</h2>
+    <div class="review-slider bento-card" style="overflow: hidden;">
+      <div class="review-track" id="reviewTrack">
+        <div class="review-card"><i class="fas fa-quote-left" style="color:var(--gold);"></i><p>"Absolutely sparkling clean! The team was punctual and friendly. Best cleaners in Belfast." — Sarah M.</p><span>⭐⭐⭐⭐⭐</span></div>
+        <div class="review-card"><i class="fas fa-quote-left" style="color:var(--gold);"></i><p>"Deep cleaned our whole house, felt brand new. Highly recommend Gifts of Sparkle!" — David K.</p><span>⭐⭐⭐⭐⭐</span></div>
+        <div class="review-card"><i class="fas fa-quote-left" style="color:var(--gold);"></i><p>"Professional, thorough, eco-friendly products. Will book weekly." — Emma R.</p><span>⭐⭐⭐⭐⭐</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>📸 Before / After — Real Results</h2>
+    <div class="before-after-grid">
+      <div class="ba-img" style="background-image: url('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=400&h=250&fit=crop');"><div style="background:rgba(0,0,0,0.4); color:white; padding:8px;">Before</div></div>
+      <div class="ba-img" style="background-image: url('https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=400&h=250&fit=crop');"><div style="background:rgba(0,0,0,0.4); color:white; padding:8px;">After ✨</div></div>
+      <div class="ba-img" style="background-image: url('https://images.unsplash.com/photo-1574182245530-967d9b3839e8?w=400&h=250&fit=crop');"><div style="background:rgba(0,0,0,0.4); color:white; padding:8px;">Kitchen Revival</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="grid-bento-2">
+      <div class="bento-card"><h3><i class="fas fa-shield-alt"></i> Trust Badges</h3><div style="display:flex; flex-wrap:wrap; gap:12px;"><span>✔️ Fully Insured</span><span>✔️ DBS Checked</span><span>✔️ Eco Friendly</span><span>✔️ 100% Guarantee</span></div></div>
+      <div class="bento-card"><h3><i class="fas fa-users"></i> Meet Our Team</h3><div class="team-flex"><div class="team-member"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="team"><p>Bertha</p></div><div class="team-member"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="team"><p>James</p></div><div class="team-member"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="team"><p>Sarah</p></div></div></div>
+    </div>
+  </section>
+
+  <!-- Animated Counters -->
+  <section class="grid-bento" style="text-align: center;">
+    <div class="bento-card counter-item"><div class="counter-number" data-count="320">0</div><p>Homes Cleaned+</p></div>
+    <div class="bento-card counter-item"><div class="counter-number" data-count="98">0</div><p>Repeat Clients %</p></div>
+    <div class="bento-card counter-item"><div class="counter-number" data-count="1520">0</div><p>5★ Reviews</p></div>
+  </section>
+
+  <!-- Referral Program -->
+  <section class="bento-card" style="text-align: center;">
+    <h3>🎁 Refer a Friend & Get £20 Off</h3>
+    <p>Share your unique code SPARKLE20 – when they book, you both save!</p>
+    <button class="btn-gold" onclick="alert('Referral link copied: giftsofsparkle.co.uk/refer')"><i class="fas fa-gift"></i> Get Referral Link</button>
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section id="faq">
+    <h2>❓ Frequently Asked Questions</h2>
+    <div class="bento-card">
+      <div class="faq-question">Do you bring your own equipment & supplies? <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer">Yes, we bring eco-friendly products and professional equipment, unless you prefer specific items.</div>
+      <div class="faq-question">How long does a standard clean take? <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer">Typically 1.5 to 3 hours depending on property size. Deep cleans take longer.</div>
+      <div class="faq-question">Are you fully insured? <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer">Absolutely – public liability & insurance coverage for your peace of mind.</div>
+      <div class="faq-question">What areas do you cover? <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-answer">All Northern Ireland including Belfast, Armagh, Derry, Lisburn, Newry, Bangor, and more.</div>
+    </div>
+  </section>
+
+  <!-- email capture + booking calendar + contact -->
+  <section id="contact">
+    <div class="grid-bento-2">
+      <div class="bento-card">
+        <h3>📧 Get Cleaning Tips + 10% Off</h3>
+        <p>Subscribe for exclusive deals & sparkle secrets.</p>
+        <input type="email" id="subEmail" placeholder="Your best email" style="width:100%; padding:12px; border-radius: 60px; margin:10px 0;">
+        <button class="btn-gold" onclick="subscribeEmail()">Subscribe →</button>
+      </div>
+      <div class="bento-card">
+        <h3>📅 Request a Date</h3>
+        <input type="date" id="bookingDate" style="width:100%; padding:12px; border-radius:60px;">
+        <button class="btn-gold" onclick="requestBookingDate()">Request Booking</button>
+        <p class="muted" style="margin-top: 12px;">📞 0772 144 8758 | <i class="fab fa-whatsapp"></i> WhatsApp</p>
+      </div>
+    </div>
+    <div class="bento-card" style="margin-top: 1rem;">
+      <p><strong>📍 Areas we serve:</strong> Belfast • Lisburn • Armagh • Derry~Londonderry • Newry • Bangor • Ballymena • whole Northern Ireland</p>
+      <p>📧 info@giftsofsparkle.co.uk | bookings@giftsofsparkle.co.uk</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Gifts of Sparkle — Exceptional Care. Pristine Results. | Fully Licensed & Insured</p>
+</footer>
+
+<!-- sticky mobile cta -->
+<div class="mobile-cta" id="mobileCta">
+  <a href="tel:07721448758" class="cta-btn"><i class="fas fa-phone-alt"></i><span>Call</span></a>
+  <a href="https://wa.me/447721448758" class="cta-btn"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+  <a href="#quote" class="cta-btn"><i class="fas fa-calendar-check"></i><span>Book</span></a>
 </div>
-<div class='heroimg'></div>
-</section>
 
-<h2 id='packages'>Smart Cleaning Packages</h2>
-<section class='grid3'>
-<div class='card'><span class='pill'>Basic</span><h3>Maintenance Clean</h3><ul><li>Vacuuming</li><li>Mopping</li><li>Dust visible surfaces</li><li>Bathroom wipe down</li><li>Kitchen surfaces</li><li>Bin emptying</li></ul><div class='price'>From £45</div></div>
-<div class='card popular'><span class='pill'>Most Popular</span><h3>Regular Clean</h3><ul><li>Everything in Basic</li><li>Bathroom sanitising</li><li>Kitchen fronts cleaned</li><li>Mirrors polished</li><li>Deeper dusting</li></ul><div class='price'>From £60</div></div>
-<div class='card'><span class='pill'>Premium</span><h3>Deep Clean</h3><ul><li>Everything in Regular</li><li>Grease removal</li><li>Doors & frames</li><li>Skirting full clean</li><li>Detailed kitchen clean</li></ul><div class='price'>From £120</div></div>
-</section>
-
-<h2>Domestic Pricing by Property Size</h2>
-<section class='grid3'>
-<div class='card'><h3>Flat / Apartment</h3><p>Basic £45<br>Regular £60<br>Deep £120</p></div>
-<div class='card'><h3>Small House</h3><p>Basic £60<br>Regular £80<br>Deep £160</p></div>
-<div class='card'><h3>Medium House</h3><p>Basic £75<br>Regular £95<br>Deep £220</p></div>
-<div class='card'><h3>Large House</h3><p>Basic £95<br>Regular £120<br>Deep £280+</p></div>
-</section>
-
-<h2>Commercial Cleaning</h2>
-<section class='grid3'>
-<div class='card'><h3>Offices</h3><p>From £18–£25/hr</p></div>
-<div class='card'><h3>Shops / Salons</h3><p>Custom recurring schedules</p></div>
-<div class='card'><h3>Monthly Contracts</h3><p>Small £180+ • Medium £350+ • Large Quote</p></div>
-</section>
-
-<h2>Add-ons (Profit Makers)</h2>
-<section class='grid3'>
-<div class='card'>Inside Oven £35</div><div class='card'>Fridge Clean £20</div><div class='card'>Inside Windows £25</div><div class='card'>Ironing £18/hr</div><div class='card'>Laundry Wash & Fold £20</div><div class='card'>Pet Hair Removal £15</div>
-</section>
-
-<h2>Frequency Discounts</h2>
-<section class='grid3'>
-<div class='card center'><h3>Weekly</h3><div class='price'>10% Off</div></div>
-<div class='card center'><h3>Fortnightly</h3><div class='price'>5% Off</div></div>
-<div class='card center'><h3>Monthly</h3><div class='price small'>Standard Rate</div></div>
-</section>
-
-<h2 id='areas'>Areas We Serve</h2>
-<section class='card center'><p>We proudly offer cleaning services across Northern Ireland, including Armagh and surrounding areas.</p><p><span class='pill'>Belfast</span> <span class='pill'>Lisburn</span> <span class='pill'>Armagh</span> <span class='pill'>Derry~Londonderry</span> <span class='pill'>Newry</span> <span class='pill'>Bangor</span> <span class='pill'>Ballymena</span></p></section>
-
-<h2 id='contact'>Book Your Cleaning Today</h2>
-<section class='grid2'><div class='card'><p>🌐 <strong>Website:</strong> www.giftsofsparkle.co.uk</p><p>📧 <strong>General:</strong> info@giftsofsparkle.co.uk</p><p>📅 <strong>Bookings:</strong> bookings@giftsofsparkle.co.uk</p><p>👩‍💼 <strong>Bertha:</strong> bertha@giftsofsparkle.co.uk</p><p>📞 <strong>Phone / WhatsApp:</strong> 0772 144 8758</p><p><a class='btn' href='https://wa.me/447721448758'>💬 Book on WhatsApp</a></p></div><div class='card'><h3>✨ Why book with us?</h3><p>✔ Fast response & free estimates<br>✔ Fully trained, friendly staff<br>✔ Eco-friendly products available<br>✔ 100% satisfaction guarantee</p><p class='muted'>We’ll work around your schedule — evenings and weekends available. Contact us now for a sparkling clean space!</p></div></section>
-
-<h2 id='book'>Instant Booking</h2>
-<section class='grid2'>
-<div class='card'>
-<label>Property Type</label><select id='size'><option>Flat / Apartment</option><option>Small House</option><option>Medium House</option><option>Large House</option></select>
-<label>Package</label><select id='pkg'><option>Basic</option><option selected>Regular</option><option>Deep</option></select>
-<label>Add-on</label><select id='addon'><option>None</option><option>Inside Oven</option><option>Fridge Clean</option><option>Inside Windows</option><option>Ironing</option></select>
-<label>Frequency</label><select id='freq'><option>One-Off</option><option>Weekly</option><option>Fortnightly</option><option>Monthly</option></select>
-<label>Your Name</label><input id='name' placeholder='Your name'>
-<label>Preferred Date</label><input id='date' placeholder='Friday morning'>
-<button class='btn' onclick='sendBooking()'>Book on WhatsApp</button>
+<!-- exit intent modal -->
+<div id="exitModal" class="exit-modal">
+  <i class="fas fa-gem" style="font-size: 32px; color: var(--gold);"></i>
+  <h3>Wait! 10% OFF your first clean ✨</h3>
+  <p>Book today and get a sparkling discount.</p>
+  <button class="btn-gold" onclick="applyExitOffer()">Get 10% Off →</button>
+  <button style="margin-top: 8px; background: none; border: none;" onclick="closeExitModal()">No thanks</button>
 </div>
-<div class='card'><h3>Why Book Online?</h3><p>✔ Fast mobile booking<br>✔ Transparent pricing<br>✔ Repeat customer discounts<br>✔ Professional trusted service<br>✔ Quick response on WhatsApp</p><p class='muted'>Phone-first booking is how modern cleaning brands grow in 2026.</p></div>
-</section>
-</div>
-<footer>© 2026 Gifts of Sparkle • Exceptional Care. Pristine Results.</footer>
+
 <script>
-function sendBooking(){const n=document.getElementById('name').value||'Customer';const s=document.getElementById('size').value;const p=document.getElementById('pkg').value;const a=document.getElementById('addon').value;const f=document.getElementById('freq').value;const d=document.getElementById('date').value||'Flexible';const msg=`Hello Gifts of Sparkle, I'd like to book a ${p} clean for a ${s}. Add-on: ${a}. Frequency: ${f}. Name: ${n}. Preferred date: ${d}.`;window.open('https://wa.me/447721448758?text='+encodeURIComponent(msg),'_blank');}
+  // ---------- QUOTE CALCULATOR ----------
+  const priceMap = {
+    flat: { basic: 45, regular: 60, deep: 120 },
+    small: { basic: 60, regular: 80, deep: 160 },
+    medium: { basic: 75, regular: 95, deep: 220 },
+    large: { basic: 95, regular: 120, deep: 280 }
+  };
+  function updateQuote() {
+    let size = document.getElementById('quoteSize').value;
+    let type = document.getElementById('quoteType').value;
+    let addon = parseFloat(document.getElementById('quoteAddon').value) || 0;
+    let freq = parseFloat(document.getElementById('quoteFreq').value) || 1;
+    let base = priceMap[size]?.[type] || 60;
+    let total = (base + addon) * freq;
+    document.getElementById('liveQuotePrice').innerText = `£${Math.round(total)}`;
+  }
+  document.getElementById('quoteSize').addEventListener('change', updateQuote);
+  document.getElementById('quoteType').addEventListener('change', updateQuote);
+  document.getElementById('quoteAddon').addEventListener('change', updateQuote);
+  document.getElementById('quoteFreq').addEventListener('change', updateQuote);
+  updateQuote();
+
+  function sendQuoteWhatsApp() {
+    let price = document.getElementById('liveQuotePrice').innerText;
+    let msg = `Hello Gifts of Sparkle, I'd like to book the cleaning for estimated ${price}. Please confirm.`;
+    window.open(`https://wa.me/447721448758?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+  function subscribeEmail() { let email = document.getElementById('subEmail').value; if(email) alert(`Thanks ${email}! Check inbox for 10% code.`); else alert("Please enter email"); }
+  function requestBookingDate() { let d = document.getElementById('bookingDate').value; if(d) alert(`Request sent for ${d}. We'll contact you on WhatsApp.`); else alert("Select a date"); }
+  function applyExitOffer() { window.open('https://wa.me/447721448758?text=Hi! I want 10%% off first clean', '_blank'); closeExitModal(); }
+  function closeExitModal() { document.getElementById('exitModal').classList.remove('active'); }
+
+  // ---------- 2026 ANIMATIONS + COUNTERS + FADEIN ----------
+  const counters = document.querySelectorAll('.counter-number[data-count]');
+  const animateCounters = () => {
+    counters.forEach(c => {
+      const target = parseInt(c.getAttribute('data-count'));
+      if (!c.innerText || c.innerText === '0') {
+        let current = 0;
+        const step = target / 40;
+        const update = () => {
+          current += step;
+          if (current < target) { c.innerText = Math.floor(current); requestAnimationFrame(update); }
+          else c.innerText = target;
+        };
+        update();
+      }
+    });
+  };
+  const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) { animateCounters(); observer.unobserve(entry.target); } }); }, { threshold: 0.3 });
+  document.querySelectorAll('.counter-item').forEach(el => observer.observe(el));
+
+  // fade-in scroll effect
+  const fadeElems = document.querySelectorAll('.bento-card, .grid-bento > *');
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0px)'; });
+  }, { threshold: 0.1 });
+  fadeElems.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = '0.5s'; fadeObs.observe(el); });
+
+  // review slider
+  let idx = 0; const track = document.getElementById('reviewTrack'); const slides = document.querySelectorAll('.review-card');
+  if(track) setInterval(() => { idx = (idx+1) % slides.length; track.style.transform = `translateX(-${idx*100}%)`; }, 4000);
+
+  // mobile cta appears on scroll
+  window.addEventListener('scroll', () => { const cta = document.getElementById('mobileCta'); if(window.innerWidth <= 800) cta.classList.add('show'); else cta.classList.remove('show'); });
+  if(window.innerWidth <= 800) document.getElementById('mobileCta').classList.add('show');
+
+  // exit intent
+  document.addEventListener('mouseleave', (e) => { if(e.clientY <= 0 && !localStorage.getItem('exitShown')) { localStorage.setItem('exitShown','true'); document.getElementById('exitModal').classList.add('active'); } });
+  // dark mode
+  const toggle = document.getElementById('darkModeToggle');
+  toggle.addEventListener('click', () => { document.body.classList.toggle('dark'); localStorage.setItem('darkMode', document.body.classList.contains('dark')); });
+  if(localStorage.getItem('darkMode') === 'true') document.body.classList.add('dark');
+
+  // sparkle cursor effect
+  document.addEventListener('mousemove', (e) => {
+    const spark = document.createElement('div'); spark.className = 'sparkle'; spark.innerHTML = '✨'; spark.style.left = e.pageX - 8 + 'px'; spark.style.top = e.pageY - 8 + 'px'; document.body.appendChild(spark);
+    setTimeout(() => spark.remove(), 500);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(q => { q.addEventListener('click', () => { q.classList.toggle('active'); }); });
+
+  // Smooth nav
+  document.querySelectorAll('.nav-links a, .cta-btn[href="#quote"]').forEach(anchor => { anchor.addEventListener('click', function(e) { if(this.getAttribute('href')?.startsWith('#')) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); } }); });
+  document.querySelector('.btn-gold[href="#book-now"]')?.addEventListener('click', (e) => { e.preventDefault(); document.getElementById('quote').scrollIntoView({behavior:'smooth'}); });
 </script>
 </body>
 </html>
