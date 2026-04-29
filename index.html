@@ -1,544 +1,679 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0b1220">
-  <title>Gifts of Sparkle | Premium Cleaning Northern Ireland</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Gifts of Sparkle | Premium Cleaning Northern Ireland</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    :root {
-      --navy: #08111f;
-      --gold: #d9b86c;
-      --gold2: #f3d89b;
-      --text: #eaf0f8;
-      --muted: #94a3b8;
-      --card: rgba(255, 255, 255, 0.06);
-      --line: rgba(255, 255, 255, 0.08);
-      --radius: 28px;
-    }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fbfcfd;
+  color: #0f2b3d;
+  scroll-behavior: smooth;
+}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at 10% 10%, rgba(217, 184, 108, 0.12), transparent 25%),
-                  radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.04), transparent 20%),
-                  linear-gradient(140deg, #08111f, #050913 60%, #0d1629);
-      color: var(--text);
-      min-height: 100vh;
-    }
+/* MODERN NAVIGATION — premium glass effect */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0.9rem 2rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 175, 103, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s;
+}
 
-    .container { max-width: 1320px; margin: auto; padding: 0 28px; }
-    
-    /* Header & Navigation */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(18px);
-      background: rgba(8, 17, 31, 0.85);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 0;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      cursor: pointer;
-    }
-    .logo-badge {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      display: grid;
-      place-items: center;
-      font-size: 1.6rem;
-      color: #0a1222;
-      font-weight: 900;
-      box-shadow: 0 10px 20px rgba(217, 184, 108, 0.3);
-    }
-    .logo h1 { font-size: 1.2rem; font-weight: 800; }
-    .logo small { display: block; font-size: 0.7rem; color: var(--muted); }
-    
-    /* Desktop menu */
-    .menu {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .menu a {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #dbe6f5;
-      transition: 0.2s;
-      cursor: pointer;
-      text-decoration: none;
-      padding-bottom: 4px;
-    }
-    .menu a:hover, .menu a.active-nav { color: var(--gold); border-bottom: 2px solid var(--gold); }
-    
-    /* Mobile menu button & overlay */
-    .mobile-menu-btn {
-      display: none;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 10px 14px;
-      cursor: pointer;
-      font-size: 1.3rem;
-      color: var(--gold);
-    }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(8, 17, 31, 0.98);
-      backdrop-filter: blur(20px);
-      z-index: 200;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 32px;
-    }
-    .mobile-menu.active { display: flex; }
-    .mobile-menu a {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: white;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .mobile-menu a:hover, .mobile-menu a.active-nav-mobile { color: var(--gold); }
-    .close-menu {
-      position: absolute;
-      top: 24px;
-      right: 28px;
-      font-size: 2rem;
-      cursor: pointer;
-      color: var(--gold);
-    }
-    
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 28px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: 0.2s;
-      cursor: pointer;
-      border: none;
-      gap: 8px;
-    }
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color: #0a1222;
-      box-shadow: 0 8px 20px rgba(217, 184, 108, 0.3);
-    }
-    .btn-outline {
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.04);
-      color: #fff;
-    }
-    
-    /* PAGE SECTIONS – only homepage active on load */
-    .page-section { display: none; animation: fadeSlideUp 0.45s ease; }
-    .page-section.active-section { display: block; }
-    @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    /* Homepage specific */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      gap: 48px;
-      align-items: start;
-      padding: 60px 0 40px;
-    }
-    .hero-left .kicker {
-      display: inline-block;
-      padding: 6px 16px;
-      border: 1px solid rgba(217, 184, 108, 0.4);
-      background: rgba(217, 184, 108, 0.1);
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--gold2);
-      margin-bottom: 24px;
-    }
-    .hero-left h1 {
-      font-size: clamp(2.4rem, 5vw, 4.6rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -2px;
-      margin-bottom: 20px;
-    }
-    .hero-left h1 span {
-      background: linear-gradient(135deg, var(--gold), #fff0c4);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .hero-left p {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: #b7c3d7;
-      margin-bottom: 28px;
-    }
-    
-    /* Quote card */
-    .quote-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      backdrop-filter: blur(8px);
-    }
-    .form-group { margin-bottom: 18px; }
-    .form-group label {
-      display: block;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--gold2);
-    }
-    select {
-      width: 100%;
-      padding: 14px 16px;
-      font-size: 1rem;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(0, 0, 0, 0.45);
-      color: #fff;
-      outline: none;
-      cursor: pointer;
-    }
-    .price-preview {
-      background: linear-gradient(135deg, rgba(217, 184, 108, 0.15), rgba(255, 255, 255, 0.02));
-      border-radius: 24px;
-      padding: 20px;
-      text-align: center;
-      margin: 20px 0;
-    }
-    .price-live { font-size: 3rem; font-weight: 900; color: var(--gold2); }
-    
-    /* Trust bar */
-    .trust-bar {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      padding: 20px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      margin: 20px 0;
-    }
-    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; }
-    .trust-item i { color: var(--gold); }
-    
-    /* Shared card styles */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin: 40px 0;
-    }
-    .glass-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 28px;
-      transition: 0.25s;
-    }
-    .glass-card:hover { transform: translateY(-6px); border-color: rgba(217, 184, 108, 0.5); }
-    .popular-card { border: 2px solid var(--gold); position: relative; }
-    .badge-pop {
-      position: absolute;
-      top: -12px;
-      right: 20px;
-      background: var(--gold);
-      color: #0a1222;
-      padding: 5px 14px;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 800;
-    }
-    .price-large { font-size: 2rem; font-weight: 800; margin-top: 16px; color: var(--gold2); }
-    .area-pill {
-      background: rgba(217, 184, 108, 0.12);
-      border: 1px solid rgba(217, 184, 108, 0.3);
-      padding: 12px 24px;
-      border-radius: 60px;
-      font-weight: 600;
-      display: inline-block;
-      margin: 8px;
-    }
-    .section-title { font-size: 2rem; font-weight: 800; margin: 40px 0 20px; }
-    .cta-block {
-      background: linear-gradient(135deg, rgba(217, 184, 108, 0.12), rgba(255, 255, 255, 0.02));
-      border-radius: 32px;
-      padding: 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin: 50px 0;
-    }
-    
-    /* Mobile sticky buttons */
-    .mobile-sticky {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(8, 17, 31, 0.96);
-      backdrop-filter: blur(20px);
-      border-top: 1px solid var(--line);
-      padding: 12px 20px;
-      z-index: 200;
-      gap: 12px;
-      justify-content: center;
-    }
-    .mobile-sticky .btn { flex: 1; }
-    footer { text-align: center; padding: 40px 0 80px; font-size: 0.85rem; color: var(--muted); }
-    
-    @media (max-width: 980px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .cta-block { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 760px) {
-      .menu { display: none; }
-      .mobile-menu-btn { display: block; }
-      .mobile-sticky { display: flex; }
-      .container { padding: 0 20px; }
-    }
-  </style>
+.nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #0d2f55, #1f4b6e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.logo span {
+  background: linear-gradient(135deg, #d4af67, #b8863c);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* modern menu flex */
+.menu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.menu a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1f3b4c;
+  transition: 0.25s ease;
+  cursor: pointer;
+  letter-spacing: -0.2px;
+  position: relative;
+}
+
+.menu a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background: #d4af67;
+  transition: width 0.25s;
+}
+
+.menu a:hover:after {
+  width: 100%;
+}
+
+.menu a:hover {
+  color: #d4af67;
+}
+
+.btn-nav {
+  background: linear-gradient(100deg, #d4af67, #c99e48);
+  padding: 0.65rem 1.5rem;
+  border-radius: 40px;
+  color: white !important;
+  box-shadow: 0 6px 12px rgba(212, 175, 103, 0.2);
+}
+
+.btn-nav:after {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.9rem;
+  cursor: pointer;
+  color: #0d2f55;
+}
+
+/* MOBILE MENU (improved visibility) */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 78%;
+  max-width: 320px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 2000;
+  padding: 5rem 2rem;
+  transition: 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.08);
+  border-left: 1px solid rgba(212, 175, 103, 0.3);
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu a {
+  display: block;
+  margin: 1.6rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #13253a;
+  transition: 0.2s;
+}
+
+.mobile-menu a:hover {
+  color: #d4af67;
+  transform: translateX(6px);
+}
+
+.close-mobile {
+  position: absolute;
+  top: 1.3rem;
+  right: 1.8rem;
+  font-size: 2rem;
+  font-weight: 400;
+  cursor: pointer;
+  color: #2c4c6c;
+}
+
+/* PAGE SECTIONS (single-page) */
+.page {
+  display: none;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 130px 28px 70px;
+  animation: fadeUp 0.5s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HOME — minimal elegant, no hero image */
+.hero-single {
+  max-width: 780px;
+  margin: 1rem auto 0;
+  text-align: center;
+}
+
+.badge-light {
+  display: inline-block;
+  background: #f0f3f9;
+  padding: 6px 18px;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #b68b40;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.3px;
+}
+
+.hero-single h1 {
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(125deg, #0b2c44, #2d5a7c);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+
+.hero-single h1 span {
+  background: linear-gradient(125deg, #d4af67, #b67f2e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero-single p {
+  font-size: 1.12rem;
+  line-height: 1.6;
+  color: #4f6579;
+  max-width: 620px;
+  margin: 0 auto 1.8rem;
+}
+
+.cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2rem 0 2.2rem;
+}
+
+.btn {
+  padding: 12px 32px;
+  border-radius: 44px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-gold {
+  background: linear-gradient(105deg, #d4af67, #c29444);
+  color: white;
+  box-shadow: 0 6px 14px rgba(199, 158, 69, 0.25);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid #d4af67;
+  color: #2c4b36;
+}
+
+.btn-gold:hover, .btn-outline:hover {
+  transform: translateY(-3px);
+}
+
+/* stats row (0 values) */
+.stats-mini {
+  display: flex;
+  justify-content: center;
+  gap: 2.4rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: 48px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+  border: 1px solid #eef2f0;
+  min-width: 140px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #d4af67;
+}
+
+/* MODERN QUOTE CARD */
+.quote-wrapper {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 30px;
+  margin-top: 2rem;
+}
+
+.quote-card {
+  background: #ffffff;
+  border-radius: 32px;
+  padding: 1.8rem;
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #edf0f5;
+  transition: 0.2s;
+}
+
+.form-group {
+  margin-bottom: 1.3rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #2e556b;
+  letter-spacing: -0.2px;
+}
+
+select {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  font-family: 'Inter', sans-serif;
+  margin-top: 6px;
+  font-weight: 500;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: #d4af67;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 175, 103, 0.2);
+}
+
+.total-section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote-price {
+  font-size: 4rem;
+  font-weight: 800;
+  background: linear-gradient(125deg, #d4af67, #b57c2a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin: 0.3rem 0;
+}
+
+/* Packages / Areas / Contact grids */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+  margin-top: 2.2rem;
+}
+
+.card-modern {
+  background: white;
+  border-radius: 28px;
+  padding: 1.8rem;
+  transition: all 0.2s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+  border: 1px solid #edf2f5;
+}
+
+.card-modern:hover {
+  transform: translateY(-5px);
+  border-color: #e9dbbd;
+}
+
+/* Contact info */
+.contact-detail p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* footer */
+.footer {
+  text-align: center;
+  padding: 2rem 20px;
+  border-top: 1px solid #eef2f1;
+  margin-top: 2rem;
+  color: #6b7f8e;
+  font-size: 0.85rem;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .menu {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+  .hero-single h1 {
+    font-size: 2.5rem;
+  }
+  .quote-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .stats-mini {
+    gap: 1rem;
+  }
+  .stat-item {
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding: 110px 20px 50px;
+  }
+  .hero-single h1 {
+    font-size: 2rem;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+  .quote-price {
+    font-size: 3rem;
+  }
+  .stat-number {
+    font-size: 1.6rem;
+  }
+}
+
+/* additional elegance */
+h2 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #0c3149;
+}
+.section-sub {
+  color: #6f8da3;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+i {
+  color: #d4af67;
+}
+</style>
 </head>
 <body>
 
 <header>
-  <div class="container nav">
-    <div class="logo" data-section="home">
-      <div class="logo-badge">✨</div>
-      <div><h1>Gifts of Sparkle</h1><small>Premium Cleaning • NI</small></div>
-    </div>
+  <div class="nav">
+    <div class="logo">✨ Gifts of <span>Sparkle</span></div>
     <div class="menu">
-      <a data-section="home">Home</a>
-      <a data-section="packages">Smart Cleaning Packages</a>
-      <a data-section="areas">Areas We Serve</a>
-      <a data-section="contact">Contact</a>
-      <a data-section="quote" class="btn btn-gold" style="padding:8px 22px;">Book Now</a>
+      <a onclick="showSection('home')">Home</a>
+      <a onclick="showSection('quote')">Quote</a>
+      <a onclick="showSection('packages')">Packages</a>
+      <a onclick="showSection('areas')">Areas</a>
+      <a onclick="showSection('contact')">Contact</a>
+      <a onclick="showSection('quote')" class="btn-nav">Book Now</a>
     </div>
-    <div class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></div>
-    <a data-section="home">Home</a>
-    <a data-section="packages">Smart Cleaning Packages</a>
-    <a data-section="areas">Areas We Serve</a>
-    <a data-section="contact">Contact</a>
-    <a data-section="quote" class="btn btn-gold" style="margin-top: 20px;">Book Now</a>
+    <div class="hamburger" onclick="openMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
   </div>
 </header>
 
-<main>
-  <!-- HOMEPAGE (visible on load) -->
-  <div id="homeSection" class="page-section active-section">
-    <div class="container hero-grid">
-      <div class="hero-left">
-        <div class="kicker">✨ Trusted • Insured • 5-Star Service</div>
-        <h1>Luxury Cleaning That <span>Wins Back Your Time</span></h1>
-        <p>Modern homeowners & businesses choose Gifts of Sparkle for dependable, detail-driven cleaning with transparent pricing, fast booking, and premium results across Northern Ireland.</p>
-        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-          <a data-section="quote" class="btn btn-gold" style="cursor:pointer;"><i class="fas fa-calculator"></i> Instant Quote</a>
-          <a data-section="packages" class="btn btn-outline" style="cursor:pointer;">View Packages</a>
-        </div>
-        <div class="trust-bar">
-          <div class="trust-item"><i class="fas fa-shield-alt"></i> Fully Insured</div>
-          <div class="trust-item"><i class="fas fa-id-card"></i> DBS Checked</div>
-          <div class="trust-item"><i class="fas fa-leaf"></i> Eco Friendly</div>
-          <div class="trust-item"><i class="fas fa-star"></i> 5★ Rated</div>
-        </div>
-        <div class="cards-grid" style="margin-top: 20px;">
-          <div class="glass-card"><h3>280+</h3><p>Happy Homes</p></div>
-          <div class="glass-card"><h3>98%</h3><p>Repeat Clients</p></div>
-          <div class="glass-card"><h3>24/7</h3><p>WhatsApp Booking</p></div>
-        </div>
-      </div>
-      <div class="quote-card">
-        <h3><i class="fas fa-bolt" style="color: var(--gold);"></i> Smart Quote</h3>
-        <div class="form-group"><label>🏠 Property type</label><select id="quoteSize"><option value="45">Flat / Apartment</option><option value="60" selected>Small House</option><option value="80">Medium House</option><option value="100">Large House</option></select></div>
-        <div class="form-group"><label>🧼 Cleaning package</label><select id="quoteType"><option value="basic">Maintenance Clean</option><option value="regular" selected>Regular Clean</option><option value="deep">Deep Clean</option></select></div>
-        <div class="form-group"><label>✨ Add-on</label><select id="quoteAddon"><option value="0">None</option><option value="35">Oven +£35</option><option value="20">Fridge +£20</option><option value="25">Windows +£25</option></select></div>
-        <div class="form-group"><label>🔄 Frequency</label><select id="quoteFreq"><option value="1">One-Off</option><option value="0.9">Weekly -10%</option><option value="0.95">Fortnightly -5%</option></select></div>
-        <div class="price-preview"><div class="price-live" id="liveQuotePrice">£0</div><p>Estimated total</p></div>
-        <button class="btn btn-gold" style="width:100%" onclick="sendSmartBooking()"><i class="fab fa-whatsapp"></i> Book on WhatsApp</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- SMART CLEANING PACKAGES PAGE -->
-  <div id="packagesSection" class="page-section">
-    <div class="container">
-      <h2 class="section-title">✨ Smart Cleaning Packages</h2>
-      <div class="cards-grid">
-        <div class="glass-card"><h3>Basic Clean</h3><ul style="margin:16px 0 0 20px;"><li>Vacuum & mopping</li><li>Bathroom refresh</li><li>Kitchen surfaces</li><li>Dusting</li></ul><div class="price-large">£45</div></div>
-        <div class="glass-card popular-card"><span class="badge-pop">⭐ Most Popular</span><h3>Regular Clean</h3><ul style="margin:16px 0 0 20px;"><li>Everything in Basic</li><li>Full sanitising</li><li>Mirrors polished</li><li>Kitchen fronts</li></ul><div class="price-large">£60</div></div>
-        <div class="glass-card"><h3>Deep Clean</h3><ul style="margin:16px 0 0 20px;"><li>Everything in Regular</li><li>Grease removal</li><li>Skirting & frames</li><li>Detailed kitchen</li></ul><div class="price-large">£120</div></div>
-      </div>
-      <div class="cards-grid"><div class="glass-card"><h3>🏢 Commercial</h3><p>Offices from £18/hr | Retail & salons</p></div><div class="glass-card"><h3>➕ Add-ons</h3><p>Oven £35 • Fridge £20 • Windows £25</p></div><div class="glass-card"><h3>🔄 Discounts</h3><p>Weekly -10% • Fortnightly -5%</p></div></div>
-      <div class="reviews-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; margin-top:40px;">
-        <div class="glass-card"><div class="stars" style="color:#fbbf24;">★★★★★</div><p>"Absolutely spotless. Professional and worth every pound."<br>— Sarah, Belfast</p></div>
-        <div class="glass-card"><div class="stars" style="color:#fbbf24;">★★★★★</div><p>"Deep clean transformed our home. Instant booking is genius."<br>— David, Armagh</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- AREAS WE SERVE PAGE -->
-  <div id="areasSection" class="page-section">
-    <div class="container">
-      <h2 class="section-title">📍 Areas We Serve Across Northern Ireland</h2>
-      <p style="font-size:1.1rem; margin-bottom:20px;">Proudly providing premium cleaning to homes and businesses throughout NI.</p>
-      <div style="margin-bottom:30px;">
-        <span class="area-pill">Belfast</span> <span class="area-pill">Lisburn</span> <span class="area-pill">Armagh</span> <span class="area-pill">Derry~Londonderry</span>
-        <span class="area-pill">Newry</span> <span class="area-pill">Bangor</span> <span class="area-pill">Ballymena</span> <span class="area-pill">Craigavon</span>
-        <span class="area-pill">Coleraine</span> <span class="area-pill">Enniskillen</span> <span class="area-pill">Omagh</span> <span class="area-pill">Downpatrick</span>
-      </div>
-      <div class="glass-card" style="text-align:center;">
-        <i class="fas fa-map-marker-alt" style="font-size:2rem; color:var(--gold);"></i>
-        <h3>Covering all of Northern Ireland</h3>
-        <p>Even if your town isn't listed, contact us — we travel across NI to deliver sparkling results.</p>
-        <a data-section="contact" class="btn btn-gold" style="margin-top:16px; cursor:pointer;">Get a Quote for Your Area</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONTACT PAGE -->
-  <div id="contactSection" class="page-section">
-    <div class="container">
-      <div class="cta-block">
-        <div><h3 style="font-size:1.8rem; font-weight:800;">Ready for a sparkling clean space?</h3><p style="margin:15px 0;">Evening & weekend slots • Free quotes • Insured team</p><div style="display:flex; gap:12px;"><a href="https://wa.me/447721448758" class="btn btn-gold"><i class="fab fa-whatsapp"></i> WhatsApp Us</a><a href="tel:07721448758" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a></div></div>
-        <div class="glass-card"><h4>📞 Contact Details</h4><p style="margin:10px 0;"><i class="fas fa-envelope" style="color:var(--gold); width:28px;"></i> info@giftsofsparkle.co.uk</p><p style="margin:10px 0;"><i class="fab fa-whatsapp" style="color:var(--gold); width:28px;"></i> 0772 144 8758</p><p style="margin:10px 0;"><i class="fas fa-phone-alt" style="color:var(--gold); width:28px;"></i> 0772 144 8758</p><p style="margin:10px 0;"><i class="fas fa-map-marker-alt" style="color:var(--gold); width:28px;"></i> All Northern Ireland</p><hr style="border-color:var(--line); margin:16px 0;"><p>Mon-Sat: 8am–8pm | Sun: By appointment</p></div>
-      </div>
-    </div>
-  </div>
-</main>
-
-<footer class="container">
-  © 2026 Gifts of Sparkle — Premium Cleaning Northern Ireland • Fully Insured & DBS Certified
-</footer>
-
-<div class="mobile-sticky">
-  <a href="tel:07721448758" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Call</a>
-  <a href="https://wa.me/447721448758" class="btn btn-gold"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-  <a data-section="quote" class="btn btn-gold" style="cursor:pointer;">Quote</a>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="close-mobile" onclick="closeMobileMenu()">✕</div>
+  <a onclick="showSection('home'); closeMobileMenu()">🏠 Home</a>
+  <a onclick="showSection('quote'); closeMobileMenu()">💰 Quote</a>
+  <a onclick="showSection('packages'); closeMobileMenu()">📦 Packages</a>
+  <a onclick="showSection('areas'); closeMobileMenu()">📍 Areas</a>
+  <a onclick="showSection('contact'); closeMobileMenu()">📞 Contact</a>
 </div>
 
+<!-- HOME SECTION (minimal, clean, no illustration) -->
+<section class="page active" id="home">
+  <div class="hero-single">
+    <div class="badge-light">✨ Trusted across Northern Ireland</div>
+    <h1>Exceptional Care.<br><span>Pristine Results.</span></h1>
+    <p>Your Space, Our Passion — ALWAYS SPARKLING. Premium domestic & commercial cleaning with eco-friendly solutions. Fast & professional.</p>
+    <div class="cta-group">
+      <a onclick="showSection('quote')" class="btn btn-gold"><i class="fas fa-calculator"></i> Instant Quote</a>
+      <a href="https://wa.me/447721448758" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+    <div class="stats-mini">
+      <div class="stat-item"><div class="stat-number">0</div><div>Happy Clients</div></div>
+      <div class="stat-item"><div class="stat-number">0%</div><div>Repeat Clients</div></div>
+      <div class="stat-item"><div class="stat-number">24h</div><div>Fast Response</div></div>
+    </div>
+    <p style="margin-top: 2.5rem; font-style: italic; color: #a0885c;">✨ We don't just clean, we care. ✨</p>
+  </div>
+</section>
+
+<!-- QUOTE SECTION (modern professional) -->
+<section class="page" id="quote">
+  <h2>Smart Quote · <span style="color:#d4af67;">Instant Estimate</span></h2>
+  <p class="section-sub">Transparent pricing — tailor your clean and get a real-time total</p>
+  <div class="quote-wrapper">
+    <div class="quote-card">
+      <div class="form-group">
+        <label>🏠 Property size</label>
+        <select id="propertySize" onchange="updateQuoteTotal()">
+          <option value="0">Select size</option>
+          <option value="45">Flat / Apartment</option>
+          <option value="60">Small House (2-3 beds)</option>
+          <option value="85">Medium House (3-4 beds)</option>
+          <option value="110">Large House (5+ beds)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>✨ Cleaning type</label>
+        <select id="cleanType" onchange="updateQuoteTotal()">
+          <option value="0">Select type</option>
+          <option value="0">Basic Clean</option>
+          <option value="20">Regular Clean (+£20)</option>
+          <option value="60">Deep Clean (+£60)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>🧼 Add-ons (optional)</label>
+        <select id="addOnSelect" onchange="updateQuoteTotal()">
+          <option value="0">None</option>
+          <option value="35">Inside Oven Clean (£35)</option>
+          <option value="20">Fridge Deep Clean (£20)</option>
+          <option value="25">Interior Windows (£25)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>🔄 Frequency discount</label>
+        <select id="frequencyDiscount" onchange="updateQuoteTotal()">
+          <option value="1">One-off</option>
+          <option value="0.90">Weekly (10% off)</option>
+          <option value="0.95">Fortnightly (5% off)</option>
+        </select>
+      </div>
+    </div>
+    <div class="quote-card total-section">
+      <i class="fas fa-star" style="font-size: 1.8rem; opacity: 0.7;"></i>
+      <div class="quote-price" id="estimatedTotal">£0</div>
+      <p style="margin: 5px 0 20px;">estimated total (VAT excl.)</p>
+      <a href="#" onclick="sendQuoteToWhatsApp()" class="btn btn-gold" style="width: 90%;"><i class="fab fa-whatsapp"></i> Book this quote</a>
+      <p style="font-size: 0.75rem; margin-top: 15px;">Final price confirmed upon inspection</p>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="page" id="packages">
+  <h2>Premium Packages</h2>
+  <p class="section-sub">Flexible options for every home & office</p>
+  <div class="grid-cards">
+    <div class="card-modern"><h3>🌟 Basic Clean</h3><p>Weekly upkeep, dusting, vacuuming, mopping.</p><div class="price" style="font-size: 1.8rem; font-weight:800; color:#c99e48;">£45+</div></div>
+    <div class="card-modern"><h3>🔥 Regular Clean</h3><p>Most loved – includes all surfaces & bathrooms.</p><div class="price" style="font-size: 1.8rem; font-weight:800; color:#c99e48;">£60+</div></div>
+    <div class="card-modern"><h3>💎 Deep Clean</h3><p>Ultimate sparkle: ovens, skirting, intensive care.</p><div class="price" style="font-size: 1.8rem; font-weight:800; color:#c99e48;">£120+</div></div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="page" id="areas">
+  <h2>📍 Where we sparkle</h2>
+  <p class="section-sub">Full coverage across Northern Ireland</p>
+  <div class="grid-cards">
+    <div class="card-modern">Belfast</div><div class="card-modern">Lisburn</div><div class="card-modern">Armagh</div>
+    <div class="card-modern">Derry~Londonderry</div><div class="card-modern">Newry</div><div class="card-modern">Bangor</div>
+    <div class="card-modern">Ballymena</div><div class="card-modern">Craigavon</div>
+  </div>
+</section>
+
+<!-- CONTACT with full business card details -->
+<section class="page" id="contact">
+  <h2>📬 Let's connect</h2>
+  <p class="section-sub">We’re one message away from making your space shine</p>
+  <div class="grid-cards">
+    <div class="card-modern contact-detail">
+      <h3><i class="fas fa-envelope"></i> Emails</h3>
+      <p>📧 General: <strong>info@giftsofsparkle.co.uk</strong></p>
+      <p>📘 Bookings: <strong>bookings@giftsofsparkle.co.uk</strong></p>
+      <p>👩‍💼 Bertha (direct): <strong>bertha@giftsofsparkle.co.uk</strong></p>
+      <h3 style="margin-top: 18px;"><i class="fas fa-phone-alt"></i> Phone & WhatsApp</h3>
+      <p>📞 <strong>0772 144 8758</strong> <a href="https://wa.me/447721448758" style="text-decoration:none; background:#25D366; padding:4px 12px; border-radius:30px; color:white; font-size:0.7rem; margin-left:8px;"><i class="fab fa-whatsapp"></i> Chat now</a></p>
+      <p>🌐 www.giftsofsparkle.co.uk</p>
+    </div>
+    <div class="card-modern">
+      <h3>✨ Why choose us</h3>
+      <p>✔️ Fully trained, vetted staff</p>
+      <p>✔️ Eco-friendly solutions & pet safe</p>
+      <p>✔️ 100% satisfaction guarantee</p>
+      <p>✔️ 24h emergency response</p>
+      <p style="margin-top: 14px; font-style:italic;">"We don't just clean, we care."</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 Gifts of Sparkle — Professional Cleaning Northern Ireland | Your Space, Our Passion, ALWAYS SPARKLING.
+</footer>
+
 <script>
-  // ---------- Quote calculator ----------
-  const priceMap = {
-    basic: {45:45,60:60,80:75,100:95},
-    regular: {45:60,60:80,80:95,100:120},
-    deep: {45:120,60:160,80:220,100:280}
-  };
-  function updateQuote() {
-    let size = parseFloat(document.getElementById('quoteSize').value);
-    let type = document.getElementById('quoteType').value;
-    let addon = parseFloat(document.getElementById('quoteAddon').value) || 0;
-    let freq = parseFloat(document.getElementById('quoteFreq').value) || 1;
-    let base = priceMap[type]?.[size] || 60;
-    let total = Math.round((base + addon) * freq);
-    document.getElementById('liveQuotePrice').innerText = '£' + total;
-  }
-  document.getElementById('quoteSize').addEventListener('change', updateQuote);
-  document.getElementById('quoteType').addEventListener('change', updateQuote);
-  document.getElementById('quoteAddon').addEventListener('change', updateQuote);
-  document.getElementById('quoteFreq').addEventListener('change', updateQuote);
-  updateQuote();
-
-  function sendSmartBooking() {
-    let sizeText = document.getElementById('quoteSize').options[document.getElementById('quoteSize').selectedIndex].text;
-    let typeText = document.getElementById('quoteType').options[document.getElementById('quoteType').selectedIndex].text;
-    let addonText = document.getElementById('quoteAddon').options[document.getElementById('quoteAddon').selectedIndex].text;
-    let price = document.getElementById('liveQuotePrice').innerText;
-    let msg = `Hello Gifts of Sparkle,\n\nI'd like to book:\n🏠 Property: ${sizeText}\n🧼 Package: ${typeText}\n✨ Add-on: ${addonText}\n💰 Estimated Price: ${price}\n\nPlease confirm availability.`;
-    window.open(`https://wa.me/447721448758?text=${encodeURIComponent(msg)}`, '_blank');
-  }
-
-  // ---------- SINGLE PAGE SWITCHING: only homepage visible at start ----------
-  const sections = {
-    home: document.getElementById('homeSection'),
-    packages: document.getElementById('packagesSection'),
-    areas: document.getElementById('areasSection'),
-    contact: document.getElementById('contactSection')
-  };
-
+  // Single-page navigation (show only active section)
   function showSection(sectionId) {
-    Object.values(sections).forEach(sec => { if(sec) sec.classList.remove('active-section'); });
-    if (sectionId === 'quote') {
-      if(sections.home) sections.home.classList.add('active-section');
-      document.getElementById('homeSection')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else if (sections[sectionId]) {
-      sections[sectionId].classList.add('active-section');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    // Update active nav styles
-    document.querySelectorAll('.menu a[data-section]').forEach(link => {
-      if (link.getAttribute('data-section') === sectionId) link.classList.add('active-nav');
-      else link.classList.remove('active-nav');
-    });
-    document.querySelectorAll('.mobile-menu a[data-section]').forEach(link => {
-      if (link.getAttribute('data-section') === sectionId) link.classList.add('active-nav-mobile');
-      else link.classList.remove('active-nav-mobile');
-    });
-    document.getElementById('mobileMenu')?.classList.remove('active');
+    const sections = document.querySelectorAll('.page');
+    sections.forEach(sec => sec.classList.remove('active'));
+    const activeSection = document.getElementById(sectionId);
+    if (activeSection) activeSection.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Attach click handlers to all nav links
-  document.querySelectorAll('.menu a[data-section], .mobile-menu a[data-section]').forEach(el => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      showSection(el.getAttribute('data-section'));
-    });
-  });
-  document.querySelectorAll('[data-section]').forEach(el => {
-    if (!el.closest('.menu') && !el.closest('.mobile-menu')) {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        showSection(el.getAttribute('data-section'));
-      });
+  // Mobile menu handlers
+  function openMobileMenu() {
+    document.getElementById('mobileMenu').classList.add('active');
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('active');
+  }
+  
+  // Smart Quote Calculator (modern, starts at £0)
+  function updateQuoteTotal() {
+    let property = parseFloat(document.getElementById('propertySize').value) || 0;
+    let cleaning = parseFloat(document.getElementById('cleanType').value) || 0;
+    let addon = parseFloat(document.getElementById('addOnSelect').value) || 0;
+    let discount = parseFloat(document.getElementById('frequencyDiscount').value) || 1;
+    
+    let subtotal = property + cleaning + addon;
+    let total = subtotal * discount;
+    if (isNaN(total)) total = 0;
+    const rounded = Math.round(total);
+    const totalElement = document.getElementById('estimatedTotal');
+    totalElement.innerText = '£' + rounded;
+    // additional fallback for zero state
+    if (property === 0 && cleaning === 0 && addon === 0) totalElement.innerText = '£0';
+  }
+  
+  function sendQuoteToWhatsApp() {
+    let totalText = document.getElementById('estimatedTotal').innerText;
+    let sizeSelect = document.getElementById('propertySize');
+    let sizeText = sizeSelect.options[sizeSelect.selectedIndex]?.text || "Not selected";
+    let typeSelect = document.getElementById('cleanType');
+    let typeText = typeSelect.options[typeSelect.selectedIndex]?.text || "Not selected";
+    let addonSelect = document.getElementById('addOnSelect');
+    let addonText = addonSelect.options[addonSelect.selectedIndex]?.text || "None";
+    
+    let message = `✨ Gifts of Sparkle Quote Request ✨%0ATotal: ${totalText}%0AProperty: ${sizeText}%0ACleaning: ${typeText}%0AAdd-on: ${addonText}%0AI would like to book this service. Can you confirm availability?`;
+    window.open(`https://wa.me/447721448758?text=${message}`, '_blank');
+  }
+  
+  // Attach event listeners to recalc on load
+  document.addEventListener('DOMContentLoaded', () => {
+    // initial quote zero
+    updateQuoteTotal();
+    // set default stats exactly as requested: 0 and 0%
+    const statNumbers = document.querySelectorAll('.stat-number');
+    if (statNumbers.length >= 2) {
+      statNumbers[0].innerText = "0";
+      statNumbers[1].innerText = "0%";
     }
+    // Make sure ALL client stats reflect zero from design (done already)
+    // Mobile menu close when click outside? extra behavior - fine  
   });
-
-  // Mobile menu open/close
-  document.getElementById('mobileMenuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('active'));
-  document.getElementById('closeMenuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('active'));
-  document.getElementById('mobileMenu').addEventListener('click', (e) => { if (e.target === document.getElementById('mobileMenu')) document.getElementById('mobileMenu').classList.remove('active'); });
-
-  // Start with Home only
-  showSection('home');
+  
+  // ensure that any dynamic recalc
+  window.updateQuoteTotal = updateQuoteTotal;
+  
+  // extra: prevent any residual image or lady illustration — removed fully
+  // Also navigation bar visible on mobile: hamburger now easily accessible and stylish.
 </script>
 </body>
 </html>
