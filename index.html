@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Gifts of Sparkle | Premium Cleaning Northern Ireland</title>
+    <title>Gifts of Sparkle | 2026 Premium Cleaning</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
             --primary: #1d4ed8;
@@ -52,61 +53,78 @@
             scroll-padding-top: 100px;
         }
 
-        /* Galaxy background with stars */
         body {
             font-family: 'Inter', sans-serif;
-            background: radial-gradient(ellipse at bottom, #13264a 0%, #080b1f 100%);
+            background: radial-gradient(ellipse at bottom, #0b1120 0%, #030617 100%);
             color: var(--gray-800);
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             position: relative;
-            min-height: 100vh;
         }
 
-        /* Starfield container */
+        .gradient-orb {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .orb {
+            position: absolute;
+            width: 60vmax;
+            height: 60vmax;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(29,78,216,0.2) 0%, rgba(6,16,35,0) 70%);
+            filter: blur(80px);
+            animation: floatOrb 18s infinite alternate ease-in-out;
+        }
+        .orb:nth-child(1) { top: -20%; left: -20%; animation-duration: 25s; background: radial-gradient(circle, rgba(59,130,246,0.25), transparent);}
+        .orb:nth-child(2) { bottom: -10%; right: -15%; width: 80vmax; height: 80vmax; animation-duration: 20s; background: radial-gradient(circle, rgba(96,165,250,0.2), transparent);}
+        .orb:nth-child(3) { top: 40%; left: 60%; width: 50vmax; height: 50vmax; animation-duration: 30s; background: radial-gradient(circle, rgba(37,99,235,0.15), transparent);}
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+            100% { transform: translate(5%, 8%) scale(1.2); opacity: 0.8; }
+        }
+
         #stars {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
+            z-index: 1;
             pointer-events: none;
-            overflow: hidden;
         }
-
         .star {
             position: absolute;
             background: white;
             border-radius: 50%;
             animation: twinkle var(--duration) ease-in-out infinite;
-            animation-delay: var(--delay);
+            opacity: 0.6;
         }
-
         @keyframes twinkle {
-            0%,
-            100% {
-                opacity: 0.2;
-            }
-            50% {
-                opacity: 1;
-            }
+            0%, 100% { opacity: 0.2; transform: scale(1);}
+            50% { opacity: 1; transform: scale(1.2);}
         }
 
-        /* Premium glass effect for cards (optional but adds luxury) */
-        .quote-card,
-        .card-package,
-        .testimonial-card,
-        .card-modern {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.5);
+        .glass-card {
+            background: rgba(15, 30, 50, 0.55);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-xl);
+            transition: all var(--transition-smooth);
+        }
+        .glass-card:hover {
+            border-color: rgba(59,130,246,0.6);
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+            transform: translateY(-6px);
         }
 
-        /* ============ HEADER ============ */
         header {
             position: fixed;
             top: 0;
@@ -114,20 +132,16 @@
             width: 100%;
             z-index: 1000;
             padding: 0.8rem 2rem;
-            background: rgba(255, 255, 255, 0.94);
+            background: rgba(8, 12, 25, 0.75);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(29, 78, 216, 0.2);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            border-bottom: 1px solid rgba(59,130,246,0.3);
             transition: all var(--transition);
         }
-
         header.scrolled {
-            padding: 0.55rem 2rem;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-            background: rgba(255, 255, 255, 0.97);
+            padding: 0.5rem 2rem;
+            background: rgba(8, 12, 25, 0.92);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
         }
-
         .nav {
             max-width: 1400px;
             margin: 0 auto;
@@ -135,1535 +149,464 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
             font-size: 1.5rem;
             font-weight: 800;
-            letter-spacing: -0.4px;
             cursor: pointer;
-            transition: var(--transition);
         }
-
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), #2563eb);
-            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: white;
-            box-shadow: var(--shadow-primary);
-            transition: var(--transition);
+            box-shadow: 0 0 0 2px rgba(59,130,246,0.5), 0 8px 20px -6px #1e3a8a;
         }
-
-        .logo:hover .logo-icon {
-            transform: rotate(-8deg) scale(1.05);
-        }
-
         .logo-text {
-            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            background: linear-gradient(135deg, #ffffff, #94a3b8);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             font-weight: 800;
         }
-
-        .logo-text span {
-            background: linear-gradient(135deg, var(--primary), #60a5fa);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
         .menu {
             display: flex;
-            gap: 1.8rem;
+            gap: 2rem;
             align-items: center;
         }
-
         .menu a {
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.93rem;
-            color: var(--gray-700);
-            transition: var(--transition);
-            cursor: pointer;
-            letter-spacing: -0.2px;
+            color: #e2e8f0;
+            transition: 0.2s;
             position: relative;
-            padding: 4px 0;
-            white-space: nowrap;
         }
-
+        .menu a:hover { color: white; }
         .menu a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2.5px;
-            bottom: -4px;
+            height: 2px;
+            bottom: -6px;
             left: 0;
-            background: linear-gradient(90deg, var(--primary), #2563eb);
-            border-radius: 4px;
-            transition: width var(--transition);
+            background: linear-gradient(90deg, #3b82f6, #a5b4fc);
+            transition: width 0.3s;
         }
-
-        .menu a:hover {
-            color: var(--primary-dark);
-        }
-
-        .menu a:hover::after {
-            width: 100%;
-        }
-
+        .menu a:hover::after { width: 100%; }
         .btn-nav {
-            background: linear-gradient(135deg, var(--primary), #2563eb);
+            background: linear-gradient(105deg, #1e3a8a, #2563eb);
             padding: 0.6rem 1.6rem;
-            border-radius: var(--radius-full);
+            border-radius: 40px;
             color: white !important;
-            font-weight: 700 !important;
-            box-shadow: var(--shadow-primary);
-            transition: all var(--transition) !important;
-            letter-spacing: -0.1px;
-        }
-
-        .btn-nav::after {
-            display: none !important;
-        }
-
-        .btn-nav:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 32px -6px rgba(29, 78, 216, 0.55) !important;
-            color: white !important;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.7rem;
-            cursor: pointer;
-            color: var(--navy);
-            width: 44px;
-            height: 44px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            background: var(--gray-50);
-            transition: var(--transition);
-            border: 1px solid var(--gray-200);
-        }
-
-        .hamburger:hover {
-            background: var(--gray-100);
-            border-color: var(--primary);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 82%;
-            max-width: 360px;
-            height: 100vh;
-            background: rgba(255, 255, 255, 0.99);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            z-index: 2000;
-            padding: 5rem 2rem 2rem;
-            transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.15);
-            border-left: 1px solid rgba(29, 78, 216, 0.25);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu a {
-            display: block;
-            margin: 0.8rem 0;
-            padding: 0.9rem 1.2rem;
-            font-size: 1.15rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: var(--navy);
-            transition: var(--transition);
-            border-radius: var(--radius);
-            background: transparent;
-        }
-
-        .mobile-menu a:hover,
-        .mobile-menu a:active {
-            background: var(--primary-soft);
-            color: var(--navy-deep);
-            transform: translateX(6px);
-        }
-
-        .mobile-menu .btn-mobile-book {
-            background: linear-gradient(135deg, var(--primary), #2563eb);
-            color: white !important;
-            text-align: center;
-            margin-top: auto;
-            border-radius: var(--radius-full);
             font-weight: 700;
-            box-shadow: var(--shadow-primary);
+            box-shadow: 0 4px 14px rgba(37,99,235,0.4);
         }
-
-        .close-mobile {
-            position: absolute;
-            top: 1.2rem;
-            right: 1.5rem;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--gray-600);
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: var(--transition);
-            background: var(--gray-100);
+        .btn-nav::after { display: none; }
+        .hamburger { display: none; font-size: 1.6rem; color: white; cursor: pointer; }
+        .mobile-menu {
+            position: fixed; top:0; right:-100%; width: 80%; max-width: 340px;
+            height: 100vh; background: rgba(10,20,35,0.98); backdrop-filter: blur(40px);
+            z-index: 2000; padding: 5rem 2rem; transition: 0.4s;
+            border-left: 1px solid rgba(59,130,246,0.4);
         }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu a { display: block; margin: 1rem 0; font-size: 1.2rem; color: #cbd5e1; text-decoration: none; font-weight: 600; }
+        .close-mobile { position: absolute; top: 1.2rem; right: 1.5rem; font-size: 1.8rem; cursor: pointer; color: white; }
+        .mobile-overlay { position: fixed; inset:0; background: rgba(0,0,0,0.5); z-index: 1500; opacity:0; pointer-events: none; transition:0.3s; }
+        .mobile-overlay.active { opacity:1; pointer-events: auto; }
 
-        .close-mobile:hover {
-            background: #fee2e2;
-            color: #dc2626;
-        }
-
-        .mobile-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1500;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease;
-        }
-
-        .mobile-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* ============ PAGE SECTIONS ============ */
         .page {
             display: none;
             max-width: 1300px;
             margin: 0 auto;
-            padding: 120px 28px 70px;
-            animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+            padding: 130px 28px 80px;
             position: relative;
-            z-index: 1;
+            z-index: 5;
+            animation: fadeSlideUp 0.6s ease-out;
+        }
+        .page.active { display: block; }
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
         }
 
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(28px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ============ HOME SECTION ============ */
         .hero-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
         }
-
-        .hero-content {
-            text-align: left;
-            color: white;
-        }
-
         .badge-premium {
+            background: rgba(59,130,246,0.2);
+            backdrop-filter: blur(8px);
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
             padding: 8px 20px;
-            border-radius: var(--radius-full);
-            font-size: 0.85rem;
+            border-radius: 60px;
             font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            text-transform: uppercase;
-        }
-
-        .badge-premium i {
             color: #a5b4fc;
-            font-size: 0.75rem;
+            border: 1px solid rgba(59,130,246,0.5);
+            margin-bottom: 1.5rem;
         }
-
         .hero-content h1 {
-            font-family: 'Playfair Display', 'Inter', serif;
-            font-size: 3.6rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
             font-weight: 800;
             line-height: 1.15;
-            color: #ffffff;
-            margin-bottom: 1.2rem;
-            letter-spacing: -0.5px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-
-        .hero-content h1 .highlight {
-            background: linear-gradient(135deg, #60a5fa, #93c5fd, #3b82f6);
+        .hero-content .highlight {
+            background: linear-gradient(135deg, #60a5fa, #93c5fd);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            position: relative;
         }
-
-        .hero-content h1 .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: rgba(96, 165, 250, 0.25);
-            border-radius: 4px;
-            z-index: -1;
-        }
-
         .hero-content p {
             font-size: 1.1rem;
-            line-height: 1.7;
-            color: #cbd5e1;
-            max-width: 520px;
-            margin-bottom: 2rem;
+            color: #cbd5e6;
+            margin: 1.5rem 0;
         }
-
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2.5rem;
-        }
-
+        .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;}
         .btn {
-            padding: 13px 32px;
-            border-radius: var(--radius-full);
+            padding: 12px 28px;
+            border-radius: 60px;
             font-weight: 700;
-            border: none;
-            cursor: pointer;
-            transition: all var(--transition);
-            font-size: 0.95rem;
+            text-decoration: none;
+            transition: 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            text-decoration: none;
-            letter-spacing: -0.1px;
-            position: relative;
-            overflow: hidden;
         }
-
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #2563eb, var(--primary-dark));
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
             color: white;
-            box-shadow: 0 8px 24px rgba(29, 78, 216, 0.5);
-            font-weight: 700;
+            box-shadow: 0 8px 20px -6px #1e3a8a;
         }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 28px -8px #1e3a8a; }
+        .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.6); color: white; }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 36px -6px rgba(29, 78, 216, 0.6);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.7);
-            color: white;
-            font-weight: 700;
-        }
-
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-            border-color: white;
-        }
-
-        .hero-visual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .hero-card-stack {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            aspect-ratio: 1/1;
-        }
-
+        .hero-visual { position: relative; }
+        .hero-card-stack { position: relative; height: 400px; }
         .hero-floating-card {
             position: absolute;
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(29, 78, 216, 0.2);
-            transition: all var(--transition-smooth);
+            background: rgba(15, 30, 55, 0.7);
+            backdrop-filter: blur(16px);
+            border-radius: 32px;
+            padding: 1.2rem;
+            border: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 20px 35px -12px black;
         }
-
         .hero-floating-card.card-main {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 75%;
-            aspect-ratio: 1/1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 3;
-            background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
-            border: 2px solid rgba(29, 78, 216, 0.3);
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 70%; text-align: center;
         }
-
-        .hero-floating-card.card-main .sparkle-icon {
-            font-size: 3.5rem;
-            margin-bottom: 0.8rem;
-            animation: sparkleFloat 2.5s ease-in-out infinite;
-        }
-
-        @keyframes sparkleFloat {
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-12px) scale(1.08);
-            }
-        }
-
-        .hero-floating-card.card-main h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--navy);
-            font-weight: 700;
-        }
-
-        .hero-floating-card.card-main .stars {
-            color: var(--primary);
-            font-size: 1rem;
-            margin-top: 4px;
-        }
-
-        .hero-floating-card.card-top-right {
-            top: 5%;
-            right: 0;
-            width: 55%;
-            z-index: 2;
-            padding: 1rem 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .hero-floating-card.card-top-right .check-circle {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: #ecfdf5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #10b981;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .hero-floating-card.card-bottom-left {
-            bottom: 8%;
-            left: 0;
-            width: 60%;
-            z-index: 2;
-            padding: 1rem 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .hero-floating-card.card-bottom-left .avatar-group {
-            display: flex;
-            flex-shrink: 0;
-        }
-
-        .avatar-dot {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 3px solid white;
-            margin-left: -10px;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: white;
-        }
-
-        .avatar-dot:first-child {
-            margin-left: 0;
-        }
-        .avatar-dot.a1 {
-            background: var(--primary);
-        }
-        .avatar-dot.a2 {
-            background: #10b981;
-        }
-        .avatar-dot.a3 {
-            background: #6366f1;
-        }
-
-        .stats-row {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
+        .stats-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
         .stat-badge {
             display: flex;
             align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 0.8rem 1.4rem;
-            border-radius: var(--radius-full);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-            color: white;
-        }
-
-        .stat-badge:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .stat-badge .stat-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .stat-icon.green {
-            background: rgba(16, 185, 129, 0.3);
-            color: #6ee7b7;
-        }
-        .stat-icon.blue {
-            background: rgba(59, 130, 246, 0.3);
-            color: #93c5fd;
-        }
-        .stat-icon.amber {
-            background: rgba(245, 158, 11, 0.3);
-            color: #fcd34d;
-        }
-
-        .stat-badge .stat-info .stat-val {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: white;
-            line-height: 1;
-        }
-        .stat-badge .stat-info .stat-label {
-            font-size: 0.7rem;
-            color: #cbd5e1;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
-        /* ============ QUOTE SECTION (No pricing) ============ */
-        .section-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.3px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-        }
-        .section-header .blue-accent {
-            color: #60a5fa;
-        }
-        .section-sub {
-            color: #cbd5e1;
-            margin-top: 6px;
-            font-size: 1rem;
-            font-weight: 500;
+            gap: 8px;
+            background: rgba(15,30,55,0.6);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            color: #cbd5e6;
         }
 
         .quote-wrapper {
             display: grid;
             grid-template-columns: 1.5fr 1fr;
             gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
         }
-
-        .quote-card {
-            background: var(--white);
-            border-radius: var(--radius-xl);
-            padding: 2rem;
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(255,255,255,0.3);
-            transition: var(--transition);
-        }
-
-        .quote-card:hover {
-            box-shadow: var(--shadow-lg);
-        }
-
-        .form-group {
-            margin-bottom: 1.4rem;
-        }
-        .form-group label {
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--navy);
-            letter-spacing: -0.2px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 6px;
-        }
-        .form-group label i {
-            color: var(--primary);
-            font-size: 0.8rem;
-        }
-
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { font-weight: 600; color: #e2e8f0; display: flex; align-items: center; gap: 8px; margin-bottom: 0.5rem; }
         select {
             width: 100%;
-            padding: 13px 16px;
-            border-radius: var(--radius);
-            border: 2px solid var(--gray-200);
-            background: var(--gray-50);
-            font-family: 'Inter', sans-serif;
+            padding: 14px 18px;
+            background: rgba(20,30,50,0.7);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 60px;
+            color: white;
             font-weight: 500;
-            font-size: 0.93rem;
-            transition: var(--transition);
-            cursor: pointer;
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%236b7280'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 16px center;
-            color: var(--gray-800);
+            backdrop-filter: blur(4px);
         }
+        .total-card { text-align: center; }
+        .quote-price { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #60a5fa, #ffffff); background-clip: text; -webkit-background-clip: text; color: transparent; }
 
-        select:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
-            background: white;
-        }
-
-        .total-card {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
-            border: 2px solid rgba(29, 78, 216, 0.25);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .total-card::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            right: -30px;
-            width: 100px;
-            height: 100px;
-            background: rgba(29, 78, 216, 0.04);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .total-card .sparkle-top {
-            font-size: 2rem;
-            opacity: 0.7;
-            margin-bottom: 0.5rem;
-        }
-        .quote-price {
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), #2563eb);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin: 0.2rem 0;
-            line-height: 1;
-            letter-spacing: -1px;
-        }
-        .price-breakdown {
-            font-size: 0.8rem;
-            color: var(--gray-500);
-            margin: 8px 0 16px;
-            font-weight: 500;
-        }
-
-        /* ============ PACKAGES ============ */
         .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
-
         .card-package {
-            background: rgba(255,255,255,0.88);
-            backdrop-filter: blur(12px);
-            border-radius: var(--radius-xl);
-            padding: 2rem 1.6rem;
-            transition: all var(--transition-smooth);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255,255,255,0.5);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
+            background: rgba(15,30,55,0.6);
+            backdrop-filter: blur(14px);
+            border-radius: 32px;
+            padding: 2rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.15);
         }
-
         .card-package:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-            border-color: rgba(29, 78, 216, 0.5);
+            transform: translateY(-10px);
+            border-color: #3b82f6;
         }
-
-        .card-package.featured {
-            border: 2px solid var(--primary);
-            box-shadow: var(--shadow-primary);
-        }
-
-        .card-package .pkg-badge {
-            position: absolute;
-            top: 14px;
-            right: -28px;
-            background: linear-gradient(135deg, var(--primary), #2563eb);
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 4px 30px;
-            transform: rotate(45deg);
-            letter-spacing: 0.5px;
-        }
-
-        .card-package .pkg-icon {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            animation: sparkleFloat 3s ease-in-out infinite;
-        }
-        .card-package:nth-child(2) .pkg-icon {
-            animation-delay: 0.4s;
-        }
-        .card-package:nth-child(3) .pkg-icon {
-            animation-delay: 0.8s;
-        }
-
-        .card-package h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-        }
-        .card-package .pkg-price {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin: 0.8rem 0;
-        }
-        .card-package .pkg-price small {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--gray-500);
-        }
-        .card-package ul {
-            list-style: none;
-            text-align: left;
-            margin: 1rem 0;
-        }
-        .card-package ul li {
-            padding: 6px 0;
-            font-size: 0.9rem;
-            color: var(--gray-600);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .card-package ul li i {
-            color: #10b981;
-            font-size: 0.8rem;
-        }
-
-        /* ============ AREAS ============ */
+        .pkg-price { font-size: 1.8rem; font-weight: 800; color: #60a5fa; margin: 1rem 0; }
         .areas-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 1rem;
-            margin-top: 2rem;
         }
         .area-tag {
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(6px);
-            border-radius: var(--radius);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(4px);
             padding: 1rem;
+            border-radius: 60px;
             text-align: center;
             font-weight: 600;
-            color: var(--navy);
-            border: 1px solid rgba(255,255,255,0.4);
-            transition: var(--transition);
-            cursor: default;
-            font-size: 0.9rem;
+            color: #cbd5e1;
         }
-        .area-tag:hover {
-            border-color: var(--primary);
-            background: #f8faff;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-        .area-tag i {
-            color: var(--primary);
-            margin-right: 4px;
-        }
-
-        /* ============ TESTIMONIALS ============ */
         .testimonials-scroll {
             display: flex;
             gap: 1.5rem;
             overflow-x: auto;
-            padding: 1rem 0 2rem;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
+            padding-bottom: 1rem;
         }
-        .testimonials-scroll::-webkit-scrollbar {
-            display: none;
-        }
-
         .testimonial-card {
-            min-width: 320px;
-            max-width: 380px;
-            background: rgba(255,255,255,0.88);
+            min-width: 300px;
+            background: rgba(10,20,40,0.65);
             backdrop-filter: blur(12px);
-            border-radius: var(--radius-xl);
+            border-radius: 28px;
             padding: 1.8rem;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255,255,255,0.5);
-            scroll-snap-align: start;
-            flex-shrink: 0;
-            transition: var(--transition);
         }
-        .testimonial-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(29, 78, 216, 0.4);
-        }
-        .testimonial-card .testimonial-stars {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-size: 0.9rem;
-        }
-        .testimonial-card p {
-            font-style: italic;
-            color: var(--gray-600);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        .testimonial-card .testimonial-author {
-            font-weight: 700;
-            color: var(--navy);
-            font-size: 0.9rem;
-        }
-        .testimonial-card .testimonial-location {
-            font-size: 0.75rem;
-            color: var(--gray-500);
-        }
-
-        /* ============ CONTACT ============ */
-        .contact-detail p {
-            margin: 8px 0;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            color: var(--gray-700);
-        }
-        .contact-detail strong {
-            color: var(--navy);
-        }
-        .whatsapp-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #25D366;
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: var(--radius-full);
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: var(--transition);
-            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
-        }
-        .whatsapp-chip:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.5);
-        }
-
-        .card-modern {
-            background: rgba(255,255,255,0.88);
+        .footer {
+            background: rgba(5,10,25,0.8);
             backdrop-filter: blur(12px);
-            border-radius: var(--radius-xl);
-            padding: 1.8rem;
-            transition: all var(--transition);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 2rem;
+            color: #94a3b8;
+            margin-top: 3rem;
         }
-        .card-modern:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(29, 78, 216, 0.3);
-        }
-
-        /* ============ BACK TO TOP ============ */
         .back-to-top {
             position: fixed;
-            bottom: 28px;
-            right: 28px;
+            bottom: 24px;
+            right: 24px;
+            background: #1e3a8a;
             width: 48px;
             height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), #2563eb);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-primary);
-            z-index: 900;
-            opacity: 0;
-            pointer-events: none;
-            transition: all var(--transition);
+            border-radius: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-        }
-        .back-to-top.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .back-to-top:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 32px -6px rgba(29, 78, 216, 0.6);
-        }
-
-        /* ============ FOOTER ============ */
-        .footer {
-            text-align: center;
-            padding: 2.5rem 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            margin-top: 3rem;
-            color: #cbd5e1;
-            font-size: 0.85rem;
-            background: rgba(8, 11, 31, 0.7);
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-        }
-        .footer strong {
             color: white;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0;
+            transition: 0.2s;
+            border: none;
         }
+        .back-to-top.visible { opacity: 1; }
 
-        /* ============ RESPONSIVE ============ */
-        @media (max-width: 1024px) {
-            .hero-wrapper {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-            }
-            .hero-content {
-                text-align: center;
-            }
-            .hero-content p {
-                max-width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .cta-group {
-                justify-content: center;
-            }
-            .stats-row {
-                justify-content: center;
-            }
-            .hero-floating-card.card-top-right,
-            .hero-floating-card.card-bottom-left {
-                display: none;
-            }
-            .hero-floating-card.card-main {
-                position: relative;
-                top: auto;
-                left: auto;
-                transform: none;
-                width: 60%;
-                max-width: 280px;
-                margin: 0 auto;
-            }
-            .hero-card-stack {
-                aspect-ratio: auto;
-                height: 300px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .hero-content h1 {
-                font-size: 2.6rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu {
-                display: none;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            .quote-wrapper {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .section-header h2 {
-                font-size: 2rem;
-            }
-            .page {
-                padding: 100px 18px 50px;
-            }
-            .grid-cards {
-                grid-template-columns: 1fr;
-                max-width: 450px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .areas-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.6rem;
-            }
-            .area-tag {
-                font-size: 0.78rem;
-                padding: 0.7rem 0.5rem;
-            }
-            .testimonial-card {
-                min-width: 260px;
-                max-width: 300px;
-            }
-            .hero-card-stack {
-                height: 240px;
-            }
-            .hero-floating-card.card-main {
-                width: 70%;
-                max-width: 220px;
-            }
-            .stats-row {
-                gap: 0.8rem;
-            }
-            .stat-badge {
-                padding: 0.6rem 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-            .btn {
-                padding: 11px 22px;
-                font-size: 0.85rem;
-            }
-            .areas-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .page {
-                padding: 90px 12px 40px;
-            }
-            .card-package {
-                padding: 1.5rem 1.2rem;
-            }
-            .back-to-top {
-                bottom: 18px;
-                right: 18px;
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
+        @media (max-width: 880px) {
+            .menu { display: none; }
+            .hamburger { display: flex; }
+            .hero-wrapper { grid-template-columns: 1fr; text-align: center; }
+            .quote-wrapper { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
+<div class="gradient-orb"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+<div id="stars"></div>
 
-    <!-- Starfield background -->
-    <div id="stars"></div>
-
-    <!-- HEADER -->
-    <header id="mainHeader">
-        <div class="nav">
-            <div class="logo" onclick="showSection('home')">
-                <div class="logo-icon">✨</div>
-                <div class="logo-text">Gifts of <span>Sparkle</span></div>
-            </div>
-            <div class="menu" id="desktopMenu">
-                <a onclick="showSection('home')">Home</a>
-                <a onclick="showSection('quote')">Request Quote</a>
-                <a onclick="showSection('packages')">Packages</a>
-                <a onclick="showSection('areas')">Areas</a>
-                <a onclick="showSection('testimonials')">Reviews</a>
-                <a onclick="showSection('contact')">Contact</a>
-                <a onclick="showSection('quote')" class="btn-nav">✨ Request Quote</a>
-            </div>
-            <div class="hamburger" onclick="openMobileMenu()" aria-label="Open menu">
-                <i class="fas fa-bars"></i>
-            </div>
+<header id="mainHeader">
+    <div class="nav">
+        <div class="logo" onclick="showSection('home')">
+            <div class="logo-icon">✨</div>
+            <div class="logo-text">Gifts of <span>Sparkle</span></div>
         </div>
-    </header>
-
-    <!-- MOBILE OVERLAY -->
-    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-
-    <!-- MOBILE MENU -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="close-mobile" onclick="closeMobileMenu()">✕</div>
-        <a onclick="showSection('home'); closeMobileMenu()">🏠 Home</a>
-        <a onclick="showSection('quote'); closeMobileMenu()">💰 Request Quote</a>
-        <a onclick="showSection('packages'); closeMobileMenu()">📦 Packages</a>
-        <a onclick="showSection('areas'); closeMobileMenu()">📍 Areas</a>
-        <a onclick="showSection('testimonials'); closeMobileMenu()">⭐ Reviews</a>
-        <a onclick="showSection('contact'); closeMobileMenu()">📞 Contact</a>
-        <a onclick="showSection('quote'); closeMobileMenu()" class="btn-mobile-book">✨ Request Quote</a>
+        <div class="menu">
+            <a onclick="showSection('home')">Home</a>
+            <a onclick="showSection('quote')">Request Quote</a>
+            <a onclick="showSection('packages')">Packages</a>
+            <a onclick="showSection('areas')">Areas</a>
+            <a onclick="showSection('testimonials')">Reviews</a>
+            <a onclick="showSection('contact')">Contact</a>
+            <a onclick="showSection('quote')" class="btn-nav">✨ Request Quote</a>
+        </div>
+        <div class="hamburger" onclick="openMobileMenu()"><i class="fas fa-bars"></i></div>
     </div>
+</header>
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <div class="close-mobile" onclick="closeMobileMenu()">✕</div>
+    <a onclick="showSection('home');closeMobileMenu()">🏠 Home</a>
+    <a onclick="showSection('quote');closeMobileMenu()">💰 Request Quote</a>
+    <a onclick="showSection('packages');closeMobileMenu()">📦 Packages</a>
+    <a onclick="showSection('areas');closeMobileMenu()">📍 Areas</a>
+    <a onclick="showSection('testimonials');closeMobileMenu()">⭐ Reviews</a>
+    <a onclick="showSection('contact');closeMobileMenu()">📞 Contact</a>
+    <a onclick="showSection('quote');closeMobileMenu()" class="btn-mobile-book">✨ Request Quote</a>
+</div>
 
-    <!-- ============ HOME SECTION (UPDATED HERO) ============ -->
-    <section class="page active" id="home">
-        <div class="hero-wrapper">
-            <div class="hero-content">
-                <div class="badge-premium">
-                    <i class="fas fa-star"></i> Trusted Across Northern Ireland
-                </div>
-                <h1>Exceptional Care.<br><span class="highlight">Pristine Results.</span></h1>
-                <p>Your space, our passion — <strong>ALWAYS SPARKLING</strong>. Premium domestic & commercial cleaning with eco-friendly solutions. Fast, reliable, and professional service tailored to your needs.</p>
-                <div class="cta-group">
-                    <a href="https://wa.me/447721448758" target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Request a Quote</a>
-                    <a href="https://wa.me/447721448758" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-                </div>
-                <div class="stats-row">
-                    <div class="stat-badge">
-                        <div class="stat-icon green"><i class="fas fa-check-circle"></i></div>
-                        <div class="stat-info">
-                            <div class="stat-val">100%</div>
-                            <div class="stat-label">Satisfaction</div>
-                        </div>
-                    </div>
-                    <div class="stat-badge">
-                        <div class="stat-icon blue"><i class="fas fa-leaf"></i></div>
-                        <div class="stat-info">
-                            <div class="stat-val">Eco</div>
-                            <div class="stat-label">Friendly</div>
-                        </div>
-                    </div>
-                    <div class="stat-badge">
-                        <div class="stat-icon amber"><i class="fas fa-bolt"></i></div>
-                        <div class="stat-info">
-                            <div class="stat-val">24h</div>
-                            <div class="stat-label">Response</div>
-                        </div>
-                    </div>
-                </div>
+<!-- HOME -->
+<section class="page active" id="home">
+    <div class="hero-wrapper">
+        <div class="hero-content" data-aos="fade-right">
+            <div class="badge-premium"><i class="fas fa-star"></i> Trusted Across Northern Ireland</div>
+            <h1>Exceptional Care.<br><span class="highlight">Pristine Results.</span></h1>
+            <p>Your space, our passion — <strong>ALWAYS SPARKLING</strong>. Premium domestic & commercial cleaning with eco-friendly solutions. Fast, reliable, and professional service tailored to your needs.</p>
+            <div class="cta-group">
+                <a href="https://wa.me/447721448758" target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Request a Quote</a>
+                <a href="https://wa.me/447721448758" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
             </div>
-            <div class="hero-visual">
-                <div class="hero-card-stack">
-                    <div class="hero-floating-card card-main">
-                        <div class="sparkle-icon">✨</div>
-                        <h3>Gifts of Sparkle</h3>
-                        <div class="stars">★★★★★</div>
-                        <p style="font-size:0.8rem;color:var(--gray-500);margin-top:4px;">Premium Cleaning</p>
-                    </div>
-                    <div class="hero-floating-card card-top-right">
-                        <div class="check-circle"><i class="fas fa-check"></i></div>
-                        <div>
-                            <strong style="color:var(--navy);font-size:0.9rem;">Vetted & Insured</strong>
-                            <p style="font-size:0.7rem;color:var(--gray-500);">Full background checks</p>
-                        </div>
-                    </div>
-                    <div class="hero-floating-card card-bottom-left">
-                        <div class="avatar-group">
-                            <div class="avatar-dot a1">B</div>
-                            <div class="avatar-dot a2">S</div>
-                            <div class="avatar-dot a3">M</div>
-                        </div>
-                        <div>
-                            <strong style="color:var(--navy);font-size:0.9rem;">Loved by many</strong>
-                            <p style="font-size:0.7rem;color:var(--gray-500);">Join hundreds of happy clients</p>
-                        </div>
-                    </div>
+            <div class="stats-row">
+                <div class="stat-badge"><i class="fas fa-check-circle"></i> 100% Satisfaction</div>
+                <div class="stat-badge"><i class="fas fa-leaf"></i> Eco Friendly</div>
+                <div class="stat-badge"><i class="fas fa-bolt"></i> 24h Response</div>
+            </div>
+        </div>
+        <div class="hero-visual" data-aos="fade-left">
+            <div class="hero-card-stack">
+                <div class="hero-floating-card card-main glass-card">
+                    <div style="font-size: 2.5rem;">✨</div>
+                    <h3 style="color:white;">Gifts of Sparkle</h3>
+                    <div style="color:#fbbf24;">★★★★★</div>
+                    <p style="color:#94a3b8;">Premium Cleaning</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ============ QUOTE SECTION (No pricing, contact card) ============ -->
-    <section class="page" id="quote">
-        <div class="section-header">
-            <h2>Request a <span class="blue-accent">Cleaning Quote</span></h2>
-            <p class="section-sub">Tell us what you need and we'll provide a personalised quote</p>
+<!-- QUOTE (no pricing) -->
+<section class="page" id="quote">
+    <div style="text-align:center; margin-bottom:2rem;">
+        <h2 style="color:white;">Request a <span style="color:#60a5fa;">Cleaning Quote</span></h2>
+        <p style="color:#cbd5e1;">Tell us what you need and we'll provide a personalised quote</p>
+    </div>
+    <div class="quote-wrapper">
+        <div class="glass-card" style="padding: 2rem;">
+            <div class="form-group"><label><i class="fas fa-home"></i> Property size</label><select id="propertySize"><option>Select size</option><option>Flat / Apartment</option><option>Small House</option><option>Medium House</option><option>Large House</option></select></div>
+            <div class="form-group"><label><i class="fas fa-sparkles"></i> Cleaning type</label><select id="cleanType"><option>Regular Clean</option><option>Deep Clean</option><option>End of Tenancy</option></select></div>
+            <div class="form-group"><label><i class="fas fa-plus-circle"></i> Add-ons</label><select id="addOnSelect"><option>None</option><option>Inside Oven Clean</option><option>Fridge Deep Clean</option><option>Interior Windows</option><option>Carpet Steam</option></select></div>
+            <div class="form-group"><label><i class="fas fa-sync-alt"></i> Frequency</label><select id="frequencySelect"><option>One-off</option><option>Weekly</option><option>Fortnightly</option><option>Monthly</option></select></div>
+            <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="sendQuoteRequest()"><i class="fab fa-whatsapp"></i> Send my request</button>
         </div>
-        <div class="quote-wrapper">
-            <div class="quote-card">
-                <div class="form-group">
-                    <label><i class="fas fa-home"></i> Property size</label>
-                    <select id="propertySize">
-                        <option value="0">Select size</option>
-                        <option value="0">Flat / Apartment</option>
-                        <option value="0">Small House (2-3 beds)</option>
-                        <option value="0">Medium House (3-4 beds)</option>
-                        <option value="0">Large House (5+ beds)</option>
-                        <option value="0">Extra Large (6+ beds)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-sparkles"></i> Cleaning type</label>
-                    <select id="cleanType">
-                        <option value="0">Select type</option>
-                        <option value="0">Regular Clean</option>
-                        <option value="0">Deep Clean</option>
-                        <option value="0">End of Tenancy</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-plus-circle"></i> Add-ons (optional)</label>
-                    <select id="addOnSelect">
-                        <option value="0">None</option>
-                        <option value="0">Inside Oven Clean</option>
-                        <option value="0">Fridge Deep Clean</option>
-                        <option value="0">Interior Windows</option>
-                        <option value="0">Carpet Steam</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-sync-alt"></i> Cleaning frequency</label>
-                    <select id="frequencySelect">
-                        <option>One-off</option>
-                        <option>Weekly</option>
-                        <option>Fortnightly</option>
-                        <option>Monthly</option>
-                    </select>
-                </div>
-                <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;" onclick="sendDetailedQuoteRequest()">
-                    <i class="fab fa-whatsapp"></i> Send my request
-                </button>
-            </div>
-            <!-- REPLACED TOTAL CARD WITH CONTACT CARD -->
-            <div class="quote-card total-card">
-                <div class="sparkle-top">✨</div>
-                <p style="font-weight:700;color:var(--navy);">Need a Personalised Quote?</p>
-                <div class="quote-price" style="font-size:2.5rem;">Contact Us</div>
-                <p class="price-breakdown">We'll provide a custom quote based on your cleaning needs.</p>
-                <a href="https://wa.me/447721448758" target="_blank" class="btn btn-primary" style="width:85%;justify-content:center;">
-                    <i class="fab fa-whatsapp"></i> Request Quote
-                </a>
-                <p style="font-size:0.7rem;margin-top:12px;color:var(--gray-500);">
-                    Fast response • Professional service • Tailored pricing
-                </p>
-            </div>
+        <div class="glass-card total-card" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+            <div style="font-size:2rem;">✨</div>
+            <p style="font-weight:700; color:#e2e8f0;">Need a Personalised Quote?</p>
+            <div class="quote-price">Contact Us</div>
+            <p style="color:#cbd5e1;">We'll provide a custom quote based on your cleaning needs.</p>
+            <a href="https://wa.me/447721448758" target="_blank" class="btn btn-primary" style="width:85%;"><i class="fab fa-whatsapp"></i> Request Quote</a>
+            <p style="font-size:0.7rem; margin-top:12px;">Fast response • Professional service • Tailored pricing</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ============ PACKAGES SECTION (Custom Quote prices) ============ -->
-    <section class="page" id="packages">
-        <div class="section-header">
-            <h2>Premium <span class="blue-accent">Packages</span></h2>
-            <p class="section-sub">Flexible options tailored for every home & office</p>
-        </div>
-        <div class="grid-cards">
-            <div class="card-package">
-                <div class="pkg-icon">🌟</div>
-                <h3>Basic Clean</h3>
-                <p style="color:var(--gray-500);font-size:0.9rem;">Perfect for weekly upkeep</p>
-                <div class="pkg-price">Custom Quote</div>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Dusting all surfaces</li>
-                    <li><i class="fas fa-check-circle"></i> Vacuuming & mopping</li>
-                    <li><i class="fas fa-check-circle"></i> Bathroom sanitisation</li>
-                    <li><i class="fas fa-check-circle"></i> Kitchen wipe-down</li>
-                    <li><i class="fas fa-check-circle"></i> Rubbish removal</li>
-                </ul>
-                <a href="https://wa.me/447721448758?text=✨%20Hello%20Gifts%20of%20Sparkle,%20I'd%20like%20a%20quote%20for%20the%20BASIC%20CLEAN%20package." target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--navy);border-color:var(--primary);">Request Quote</a>
-            </div>
-            <div class="card-package featured">
-                <div class="pkg-badge">MOST POPULAR</div>
-                <div class="pkg-icon">🔥</div>
-                <h3>Regular Clean</h3>
-                <p style="color:var(--gray-500);font-size:0.9rem;">Our most loved service</p>
-                <div class="pkg-price">Custom Quote</div>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Everything in Basic</li>
-                    <li><i class="fas fa-check-circle"></i> All surfaces deep-cleaned</li>
-                    <li><i class="fas fa-check-circle"></i> Skirting boards & fixtures</li>
-                    <li><i class="fas fa-check-circle"></i> Interior window sills</li>
-                    <li><i class="fas fa-check-circle"></i> Cabinet exteriors</li>
-                </ul>
-                <a href="https://wa.me/447721448758?text=✨%20Hello%20Gifts%20of%20Sparkle,%20I'm%20interested%20in%20your%20REGULAR%20CLEAN%20package.%20Please%20quote." target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">Request Quote</a>
-            </div>
-            <div class="card-package">
-                <div class="pkg-icon">💎</div>
-                <h3>Deep Clean</h3>
-                <p style="color:var(--gray-500);font-size:0.9rem;">Ultimate sparkle treatment</p>
-                <div class="pkg-price">Custom Quote</div>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Everything in Regular</li>
-                    <li><i class="fas fa-check-circle"></i> Oven & appliance deep clean</li>
-                    <li><i class="fas fa-check-circle"></i> All windows (interior)</li>
-                    <li><i class="fas fa-check-circle"></i> Behind furniture</li>
-                    <li><i class="fas fa-check-circle"></i> Full sanitisation</li>
-                </ul>
-                <a href="https://wa.me/447721448758?text=✨%20Hello%20Gifts%20of%20Sparkle,%20Please%20send%20me%20a%20quote%20for%20the%20DEEP%20CLEAN%20service." target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--navy);border-color:var(--primary);">Request Quote</a>
-            </div>
-        </div>
-    </section>
+<!-- PACKAGES -->
+<section class="page" id="packages">
+    <div style="text-align:center; margin-bottom:2rem;"><h2 style="color:white;">Premium <span style="color:#60a5fa;">Packages</span></h2><p style="color:#cbd5e1;">Flexible options tailored for every home & office</p></div>
+    <div class="grid-cards">
+        <div class="card-package" data-aos="fade-up"><div style="font-size:2.5rem;">🌟</div><h3 style="color:white;">Basic Clean</h3><div class="pkg-price">Custom Quote</div><ul style="color:#cbd5e1;"><li><i class="fas fa-check-circle"></i> Dusting & vacuuming</li><li>Bathroom sanitisation</li><li>Kitchen wipe-down</li></ul><a href="https://wa.me/447721448758?text=✨%20Basic%20Clean%20quote%20request" target="_blank" class="btn btn-outline" style="width:100%;">Request Quote</a></div>
+        <div class="card-package" style="border:2px solid #3b82f6;" data-aos="fade-up" data-aos-delay="100"><div style="position:absolute; top:12px; right:-20px; background:#2563eb; padding:4px 24px; transform:rotate(45deg); font-size:0.7rem; font-weight:bold;">POPULAR</div><div style="font-size:2.5rem;">🔥</div><h3 style="color:white;">Regular Clean</h3><div class="pkg-price">Custom Quote</div><ul><li>Everything in Basic plus skirting</li><li>Interior window sills</li><li>Cabinet exteriors</li></ul><a href="https://wa.me/447721448758?text=✨%20Regular%20Clean%20quote%20request" target="_blank" class="btn btn-primary" style="width:100%;">Request Quote</a></div>
+        <div class="card-package" data-aos="fade-up" data-aos-delay="200"><div style="font-size:2.5rem;">💎</div><h3 style="color:white;">Deep Clean</h3><div class="pkg-price">Custom Quote</div><ul><li>Everything in Regular</li><li>Oven & appliance deep clean</li><li>Full sanitisation</li></ul><a href="https://wa.me/447721448758?text=✨%20Deep%20Clean%20quote%20request" target="_blank" class="btn btn-outline" style="width:100%;">Request Quote</a></div>
+    </div>
+</section>
 
-    <!-- ============ AREAS SECTION ============ -->
-    <section class="page" id="areas">
-        <div class="section-header">
-            <h2>📍 Where We <span class="blue-accent">Sparkle</span></h2>
-            <p class="section-sub">Full coverage across Northern Ireland — and expanding</p>
-        </div>
-        <div class="areas-grid">
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Belfast</div>
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Lisburn</div>
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Armagh</div>
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Derry~Londonderry</div>
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Newry</div>
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Bangor</div>
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Ballymena</div>
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Craigavon</div>
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Coleraine</div>
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Portadown</div>
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Antrim</div>
-            <div class="area-tag"><i class="fas fa-map-marker-alt"></i> Holywood</div>
-        </div>
-        <p style="text-align:center;margin-top:2rem;color:#cbd5e1;font-style:italic;">Don't see your area? <a onclick="showSection('contact')" style="color:#60a5fa;font-weight:700;cursor:pointer;text-decoration:underline;">Contact us</a> — we may still cover it!</p>
-    </section>
+<!-- AREAS -->
+<section class="page" id="areas">
+    <div style="text-align:center;"><h2 style="color:white;">📍 Where We <span style="color:#60a5fa;">Sparkle</span></h2><p style="color:#cbd5e1;">Full coverage across Northern Ireland</p></div>
+    <div class="areas-grid" style="margin-top:2rem;">
+        <div class="area-tag">Belfast</div><div class="area-tag">Lisburn</div><div class="area-tag">Armagh</div><div class="area-tag">Derry</div><div class="area-tag">Newry</div>
+        <div class="area-tag">Bangor</div><div class="area-tag">Ballymena</div><div class="area-tag">Craigavon</div><div class="area-tag">Coleraine</div><div class="area-tag">Portadown</div>
+        <div class="area-tag">Antrim</div><div class="area-tag">Holywood</div>
+    </div>
+</section>
 
-    <!-- ============ TESTIMONIALS SECTION ============ -->
-    <section class="page" id="testimonials">
-        <div class="section-header">
-            <h2>⭐ What Our <span class="blue-accent">Clients Say</span></h2>
-            <p class="section-sub">Real reviews from real people across Northern Ireland</p>
+<!-- TESTIMONIALS -->
+<section class="page" id="testimonials">
+    <div style="text-align:center;"><h2 style="color:white;">⭐ What Our <span style="color:#60a5fa;">Clients Say</span></h2><p style="color:#cbd5e1;">Real reviews from real people</p></div>
+    <div class="testimonials-scroll">
+        <div class="testimonial-card">★★★★★<p>"Absolutely outstanding service! My home has never looked this good."</p><strong>Sarah M.</strong><div>Belfast</div></div>
+        <div class="testimonial-card">★★★★★<p>"Reliable, friendly, and always sparkling results. Eco-friendly products are a big plus!"</p><strong>James R.</strong><div>Lisburn</div></div>
+        <div class="testimonial-card">★★★★★<p>"End of tenancy deep clean was flawless. Got my full deposit back."</p><strong>Aoife K.</strong><div>Derry</div></div>
+    </div>
+</section>
+
+<!-- ============ FIXED CONTACT SECTION (Full business details) ============ -->
+<section class="page" id="contact">
+    <div style="text-align:center; margin-bottom:2rem;">
+        <h2 style="color:white;">📬 Let's <span style="color:#60a5fa;">Connect</span></h2>
+        <p style="color:#cbd5e1;">We're one message away from making your space shine</p>
+    </div>
+    <div class="grid-cards" style="max-width: 1000px; margin: 0 auto;">
+        <!-- Contact details card -->
+        <div class="glass-card" style="padding: 2rem;">
+            <h3 style="color:white; margin-bottom: 1rem;"><i class="fas fa-envelope" style="color:#60a5fa;"></i> Email Us</h3>
+            <p style="color:#cbd5e1; margin: 8px 0;"><strong>General:</strong> info@giftsofsparkle.co.uk</p>
+            <p style="color:#cbd5e1; margin: 8px 0;"><strong>Bookings:</strong> bookings@giftsofsparkle.co.uk</p>
+            <p style="color:#cbd5e1; margin: 8px 0;"><strong>Bertha (direct):</strong> bertha@giftsofsparkle.co.uk</p>
+            
+            <h3 style="color:white; margin: 1.5rem 0 0.8rem 0;"><i class="fas fa-phone-alt" style="color:#60a5fa;"></i> Phone & WhatsApp</h3>
+            <p style="color:#cbd5e1; margin: 8px 0;"><i class="fas fa-phone"></i> <strong>0772 144 8758</strong></p>
+            <a href="https://wa.me/447721448758" target="_blank" class="btn btn-primary" style="margin-top: 1rem; display: inline-flex;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
-        <div class="testimonials-scroll">
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p>"Absolutely outstanding service! My home has never looked this good. Bertha and the team are incredibly thorough and professional. Highly recommended!"</p>
-                <div class="testimonial-author">Sarah M.</div>
-                <div class="testimonial-location">Belfast</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p>"I've been using Gifts of Sparkle for my weekly clean for 6 months now. Reliable, friendly, and always sparkling results. The eco-friendly products are a big plus!"</p>
-                <div class="testimonial-author">James R.</div>
-                <div class="testimonial-location">Lisburn</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p>"End of tenancy deep clean was flawless. Got my full deposit back thanks to their meticulous work. Will definitely use again for my new place."</p>
-                <div class="testimonial-author">Aoife K.</div>
-                <div class="testimonial-location">Derry</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p>"The team is always on time, super friendly, and they genuinely care about doing a great job. My kitchen has never sparkled like this!"</p>
-                <div class="testimonial-author">Michael D.</div>
-                <div class="testimonial-location">Bangor</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p>"Fast response on WhatsApp, easy booking, and excellent cleaning. The deep clean package is worth every penny. Thank you!"</p>
-                <div class="testimonial-author">Ciara N.</div>
-                <div class="testimonial-location">Newry</div>
-            </div>
+        
+        <!-- Why Choose Us card -->
+        <div class="glass-card" style="padding: 2rem;">
+            <h3 style="color:white; margin-bottom: 1rem;">✨ Why Choose Us</h3>
+            <p style="color:#cbd5e1; margin: 12px 0;"><i class="fas fa-check-circle" style="color:#10b981;"></i> Fully trained & vetted staff</p>
+            <p style="color:#cbd5e1; margin: 12px 0;"><i class="fas fa-check-circle" style="color:#10b981;"></i> Eco-friendly & pet-safe products</p>
+            <p style="color:#cbd5e1; margin: 12px 0;"><i class="fas fa-check-circle" style="color:#10b981;"></i> 100% satisfaction guarantee</p>
+            <p style="color:#cbd5e1; margin: 12px 0;"><i class="fas fa-check-circle" style="color:#10b981;"></i> 24h emergency response</p>
+            <p style="color:#cbd5e1; margin: 12px 0;"><i class="fas fa-check-circle" style="color:#10b981;"></i> Fully insured for your peace of mind</p>
+            <p style="margin-top: 20px; font-style: italic; color: #60a5fa; font-weight: 600;">"We don't just clean, we care." ✨</p>
         </div>
-    </section>
+    </div>
+    <!-- Additional note for areas not listed -->
+    <p style="text-align:center; margin-top: 2rem; color:#94a3b8;">Don't see your area? <a onclick="showSection('contact')" style="color:#60a5fa; font-weight:700; cursor:pointer;">Contact us</a> — we may still cover it!</p>
+</section>
 
-    <!-- ============ CONTACT SECTION ============ -->
-    <section class="page" id="contact">
-        <div class="section-header">
-            <h2>📬 Let's <span class="blue-accent">Connect</span></h2>
-            <p class="section-sub">We're one message away from making your space shine</p>
-        </div>
-        <div class="grid-cards" style="max-width:900px;margin:0 auto;">
-            <div class="card-modern contact-detail">
-                <h3 style="color:var(--navy);margin-bottom:1rem;"><i class="fas fa-envelope" style="color:var(--primary);"></i> Email Us</h3>
-                <p>📧 General: <strong>info@giftsofsparkle.co.uk</strong></p>
-                <p>📘 Bookings: <strong>bookings@giftsofsparkle.co.uk</strong></p>
-                <p>👩‍💼 Bertha (direct): <strong>bertha@giftsofsparkle.co.uk</strong></p>
-                <h3 style="color:var(--navy);margin-top:1.5rem;margin-bottom:0.8rem;"><i class="fas fa-phone-alt" style="color:var(--primary);"></i> Phone & WhatsApp</h3>
-                <p>📞 <strong>0772 144 8758</strong></p>
-                <a href="https://wa.me/447721448758" target="_blank" rel="noopener" class="whatsapp-chip"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-                <p style="margin-top:1rem;">🌐 <strong>www.giftsofsparkle.co.uk</strong></p>
-            </div>
-            <div class="card-modern">
-                <h3 style="color:var(--navy);margin-bottom:1rem;">✨ Why Choose Us</h3>
-                <p style="margin:8px 0;display:flex;align-items:center;gap:10px;"><span style="color:#10b981;font-size:1.1rem;">✔️</span> Fully trained & vetted staff</p>
-                <p style="margin:8px 0;display:flex;align-items:center;gap:10px;"><span style="color:#10b981;font-size:1.1rem;">✔️</span> Eco-friendly & pet-safe products</p>
-                <p style="margin:8px 0;display:flex;align-items:center;gap:10px;"><span style="color:#10b981;font-size:1.1rem;">✔️</span> 100% satisfaction guarantee</p>
-                <p style="margin:8px 0;display:flex;align-items:center;gap:10px;"><span style="color:#10b981;font-size:1.1rem;">✔️</span> 24h emergency response</p>
-                <p style="margin:8px 0;display:flex;align-items:center;gap:10px;"><span style="color:#10b981;font-size:1.1rem;">✔️</span> Fully insured for your peace of mind</p>
-                <p style="margin-top:16px;font-style:italic;color:var(--primary);font-weight:600;">"We don't just clean, we care." ✨</p>
-            </div>
-        </div>
-    </section>
+<footer class="footer">© 2026 <strong>Gifts of Sparkle</strong> — Premium Cleaning Northern Ireland | Always Sparkling ✨</footer>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- BACK TO TOP -->
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        © 2026 <strong>Gifts of Sparkle</strong> — Premium Cleaning Northern Ireland | Your Space, Our Passion, <strong>ALWAYS SPARKLING</strong> ✨
-    </footer>
-
-    <script>
-        // === GENERATE TWINKLING STARS ===
-        (function() {
-            const starsContainer = document.getElementById('stars');
-            const starCount = 250;
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                const size = Math.random() * 3 + 1;
-                const x = Math.random() * 100;
-                const y = Math.random() * 100;
-                const duration = Math.random() * 3 + 2;
-                const delay = Math.random() * 4;
-                star.style.cssText = `
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}%;
-                    top: ${y}%;
-                    --duration: ${duration}s;
-                    --delay: ${delay}s;
-                    animation: twinkle ${duration}s ease-in-out ${delay}s infinite;
-                `;
-                starsContainer.appendChild(star);
-            }
-        })();
-
-        // === SECTION NAVIGATION ===
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.page');
-            sections.forEach(sec => sec.classList.remove('active'));
-            const activeSection = document.getElementById(sectionId);
-            if (activeSection) {
-                activeSection.classList.add('active');
-                activeSection.style.animation = 'none';
-                activeSection.offsetHeight;
-                activeSection.style.animation = '';
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true, offset: 50 });
+    (function() {
+        const starsContainer = document.getElementById('stars');
+        for (let i=0;i<200;i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 2.5 + 1;
+            star.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--duration:${Math.random()*3+2}s;--delay:${Math.random()*4}s;`;
+            starsContainer.appendChild(star);
         }
+    })();
 
-        // === MOBILE MENU ===
-        function openMobileMenu() {
-            document.getElementById('mobileMenu').classList.add('active');
-            document.getElementById('mobileOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMobileMenu() {
-            document.getElementById('mobileMenu').classList.remove('active');
-            document.getElementById('mobileOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // === HEADER SCROLL EFFECT ===
-        const header = document.getElementById('mainHeader');
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-            const backToTop = document.getElementById('backToTop');
-            if (currentScroll > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        // === NEW WHATSAPP QUOTE FUNCTION (replaces old pricing logic) ===
-        function sendDetailedQuoteRequest() {
-            const property = document.getElementById('propertySize').options[document.getElementById('propertySize').selectedIndex]?.text || "Not selected";
-            const cleanType = document.getElementById('cleanType').options[document.getElementById('cleanType').selectedIndex]?.text || "Not selected";
-            const addon = document.getElementById('addOnSelect').options[document.getElementById('addOnSelect').selectedIndex]?.text || "None";
-            const frequency = document.getElementById('frequencySelect').value;
-            const message = `✨ *Gifts of Sparkle - Quote Request* ✨%0A%0A🏠 *Property:* ${property}%0A🧹 *Cleaning type:* ${cleanType}%0A➕ *Add-on:* ${addon}%0A🔄 *Frequency:* ${frequency}%0A%0A💬 I would like a personalised quote based on these preferences. Thank you!`;
-            window.open(`https://wa.me/447721448758?text=${message}`, '_blank');
-        }
-
-        // Simple requestQuote function (fallback)
-        function requestQuote() {
-            const message = `✨ Hello Gifts of Sparkle,%0A%0AI'm interested in your cleaning services and would like a personalised quote.%0A%0AThank you.`;
-            window.open(`https://wa.me/447721448758?text=${message}`, '_blank');
-        }
-
-        // Expose global functions
-        window.showSection = showSection;
-        window.openMobileMenu = openMobileMenu;
-        window.closeMobileMenu = closeMobileMenu;
-        window.sendDetailedQuoteRequest = sendDetailedQuoteRequest;
-        window.requestQuote = requestQuote;
-    </script>
+    function showSection(id) { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('active'); document.getElementById('mobileOverlay').classList.add('active'); document.body.style.overflow='hidden'; }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('active'); document.getElementById('mobileOverlay').classList.remove('active'); document.body.style.overflow=''; }
+    function sendQuoteRequest() {
+        const property = document.getElementById('propertySize').value;
+        const cleaning = document.getElementById('cleanType').value;
+        const addon = document.getElementById('addOnSelect').value;
+        const freq = document.getElementById('frequencySelect').value;
+        const msg = `✨ Gifts of Sparkle Quote Request ✨%0AProperty: ${property}%0ACleaning: ${cleaning}%0AAdd-on: ${addon}%0AFrequency: ${freq}%0A%0APlease provide a personalised quote. Thank you!`;
+        window.open(`https://wa.me/447721448758?text=${msg}`, '_blank');
+    }
+    window.addEventListener('scroll',()=>{ document.getElementById('backToTop').classList.toggle('visible', window.scrollY>400); document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY>50); });
+    window.showSection=showSection; window.openMobileMenu=openMobileMenu; window.closeMobileMenu=closeMobileMenu; window.sendQuoteRequest=sendQuoteRequest;
+</script>
 </body>
 </html>
