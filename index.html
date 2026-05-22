@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Gifts of Sparkle | 2026 Premium Cleaning</title>
+    <title>Gifts of Sparkle | Premium Cleaning Northern Ireland</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -63,6 +63,7 @@
             position: relative;
         }
 
+        /* Animated background orbs */
         .gradient-orb {
             position: fixed;
             width: 100vw;
@@ -90,6 +91,7 @@
             100% { transform: translate(5%, 8%) scale(1.2); opacity: 0.8; }
         }
 
+        /* Starfield */
         #stars {
             position: fixed;
             top: 0;
@@ -111,6 +113,7 @@
             50% { opacity: 1; transform: scale(1.2);}
         }
 
+        /* Glassmorphism core */
         .glass-card {
             background: rgba(15, 30, 50, 0.55);
             backdrop-filter: blur(14px);
@@ -125,6 +128,7 @@
             transform: translateY(-6px);
         }
 
+        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -222,6 +226,7 @@
         .mobile-overlay { position: fixed; inset:0; background: rgba(0,0,0,0.5); z-index: 1500; opacity:0; pointer-events: none; transition:0.3s; }
         .mobile-overlay.active { opacity:1; pointer-events: auto; }
 
+        /* Page sections */
         .page {
             display: none;
             max-width: 1300px;
@@ -237,6 +242,7 @@
             to { opacity: 1; transform: translateY(0);}
         }
 
+        /* Hero */
         .hero-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -322,6 +328,7 @@
             color: #cbd5e6;
         }
 
+        /* Quote section (no pricing) */
         .quote-wrapper {
             display: grid;
             grid-template-columns: 1.5fr 1fr;
@@ -338,10 +345,13 @@
             color: white;
             font-weight: 500;
             backdrop-filter: blur(4px);
+            cursor: pointer;
         }
+        select option { background: #0f1e32; }
         .total-card { text-align: center; }
         .quote-price { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #60a5fa, #ffffff); background-clip: text; -webkit-background-clip: text; color: transparent; }
 
+        /* Packages */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -354,12 +364,31 @@
             padding: 2rem;
             transition: all 0.3s;
             border: 1px solid rgba(255,255,255,0.15);
+            position: relative;
         }
         .card-package:hover {
             transform: translateY(-10px);
             border-color: #3b82f6;
         }
         .pkg-price { font-size: 1.8rem; font-weight: 800; color: #60a5fa; margin: 1rem 0; }
+        /* Fix dark text in package lists */
+        .card-package ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        .card-package ul li {
+            color: #e2e8f0;  /* bright light gray */
+            margin: 0.6rem 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        .card-package ul li i {
+            color: #10b981;
+            width: 18px;
+        }
+
         .areas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -373,7 +402,11 @@
             text-align: center;
             font-weight: 600;
             color: #cbd5e1;
+            transition: 0.2s;
         }
+        .area-tag:hover { background: rgba(59,130,246,0.3); color: white; transform: scale(1.02); }
+        
+        /* Testimonials - fixed text brightness */
         .testimonials-scroll {
             display: flex;
             gap: 1.5rem;
@@ -387,6 +420,28 @@
             border-radius: 28px;
             padding: 1.8rem;
         }
+        .testimonial-card .testimonial-stars {
+            color: #fbbf24;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+        }
+        .testimonial-card p {
+            color: #e2e8f0;  /* bright readable text */
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card strong {
+            color: white;
+            font-weight: 700;
+            display: block;
+            margin-top: 0.5rem;
+        }
+        .testimonial-card div {
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+
         .footer {
             background: rgba(5,10,25,0.8);
             backdrop-filter: blur(12px);
@@ -458,7 +513,7 @@
     <a onclick="showSection('quote');closeMobileMenu()" class="btn-mobile-book">✨ Request Quote</a>
 </div>
 
-<!-- HOME -->
+<!-- HOME SECTION -->
 <section class="page active" id="home">
     <div class="hero-wrapper">
         <div class="hero-content" data-aos="fade-right">
@@ -488,7 +543,7 @@
     </div>
 </section>
 
-<!-- QUOTE (no pricing) -->
+<!-- QUOTE SECTION (No pricing) -->
 <section class="page" id="quote">
     <div style="text-align:center; margin-bottom:2rem;">
         <h2 style="color:white;">Request a <span style="color:#60a5fa;">Cleaning Quote</span></h2>
@@ -513,71 +568,136 @@
     </div>
 </section>
 
-<!-- PACKAGES -->
+<!-- PACKAGES SECTION (bright text) -->
 <section class="page" id="packages">
     <div style="text-align:center; margin-bottom:2rem;"><h2 style="color:white;">Premium <span style="color:#60a5fa;">Packages</span></h2><p style="color:#cbd5e1;">Flexible options tailored for every home & office</p></div>
     <div class="grid-cards">
-        <div class="card-package" data-aos="fade-up"><div style="font-size:2.5rem;">🌟</div><h3 style="color:white;">Basic Clean</h3><div class="pkg-price">Custom Quote</div><ul style="color:#cbd5e1;"><li><i class="fas fa-check-circle"></i> Dusting & vacuuming</li><li>Bathroom sanitisation</li><li>Kitchen wipe-down</li></ul><a href="https://wa.me/447721448758?text=✨%20Basic%20Clean%20quote%20request" target="_blank" class="btn btn-outline" style="width:100%;">Request Quote</a></div>
-        <div class="card-package" style="border:2px solid #3b82f6;" data-aos="fade-up" data-aos-delay="100"><div style="position:absolute; top:12px; right:-20px; background:#2563eb; padding:4px 24px; transform:rotate(45deg); font-size:0.7rem; font-weight:bold;">POPULAR</div><div style="font-size:2.5rem;">🔥</div><h3 style="color:white;">Regular Clean</h3><div class="pkg-price">Custom Quote</div><ul><li>Everything in Basic plus skirting</li><li>Interior window sills</li><li>Cabinet exteriors</li></ul><a href="https://wa.me/447721448758?text=✨%20Regular%20Clean%20quote%20request" target="_blank" class="btn btn-primary" style="width:100%;">Request Quote</a></div>
-        <div class="card-package" data-aos="fade-up" data-aos-delay="200"><div style="font-size:2.5rem;">💎</div><h3 style="color:white;">Deep Clean</h3><div class="pkg-price">Custom Quote</div><ul><li>Everything in Regular</li><li>Oven & appliance deep clean</li><li>Full sanitisation</li></ul><a href="https://wa.me/447721448758?text=✨%20Deep%20Clean%20quote%20request" target="_blank" class="btn btn-outline" style="width:100%;">Request Quote</a></div>
+        <div class="card-package" data-aos="fade-up">
+            <div style="font-size:2.5rem;">🌟</div>
+            <h3 style="color:white;">Basic Clean</h3>
+            <div class="pkg-price">Custom Quote</div>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Dusting & vacuuming</li>
+                <li><i class="fas fa-check-circle"></i> Bathroom sanitisation</li>
+                <li><i class="fas fa-check-circle"></i> Kitchen wipe-down</li>
+            </ul>
+            <a href="https://wa.me/447721448758?text=✨%20Basic%20Clean%20quote%20request" target="_blank" class="btn btn-outline" style="width:100%;">Request Quote</a>
+        </div>
+        <div class="card-package" style="border:2px solid #3b82f6;" data-aos="fade-up" data-aos-delay="100">
+            <div style="position:absolute; top:12px; right:-20px; background:#2563eb; padding:4px 24px; transform:rotate(45deg); font-size:0.7rem; font-weight:bold;">POPULAR</div>
+            <div style="font-size:2.5rem;">🔥</div>
+            <h3 style="color:white;">Regular Clean</h3>
+            <div class="pkg-price">Custom Quote</div>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Everything in Basic plus skirting</li>
+                <li><i class="fas fa-check-circle"></i> Interior window sills</li>
+                <li><i class="fas fa-check-circle"></i> Cabinet exteriors</li>
+            </ul>
+            <a href="https://wa.me/447721448758?text=✨%20Regular%20Clean%20quote%20request" target="_blank" class="btn btn-primary" style="width:100%;">Request Quote</a>
+        </div>
+        <div class="card-package" data-aos="fade-up" data-aos-delay="200">
+            <div style="font-size:2.5rem;">💎</div>
+            <h3 style="color:white;">Deep Clean</h3>
+            <div class="pkg-price">Custom Quote</div>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Everything in Regular</li>
+                <li><i class="fas fa-check-circle"></i> Oven & appliance deep clean</li>
+                <li><i class="fas fa-check-circle"></i> Full sanitisation</li>
+            </ul>
+            <a href="https://wa.me/447721448758?text=✨%20Deep%20Clean%20quote%20request" target="_blank" class="btn btn-outline" style="width:100%;">Request Quote</a>
+        </div>
     </div>
 </section>
 
-<!-- AREAS -->
+<!-- AREAS SECTION -->
 <section class="page" id="areas">
     <div style="text-align:center;"><h2 style="color:white;">📍 Where We <span style="color:#60a5fa;">Sparkle</span></h2><p style="color:#cbd5e1;">Full coverage across Northern Ireland</p></div>
     <div class="areas-grid" style="margin-top:2rem;">
-        <div class="area-tag">Belfast</div><div class="area-tag">Lisburn</div><div class="area-tag">Armagh</div><div class="area-tag">Derry</div><div class="area-tag">Newry</div>
+        <div class="area-tag">Belfast</div><div class="area-tag">Lisburn</div><div class="area-tag">Armagh</div><div class="area-tag">Derry~Londonderry</div><div class="area-tag">Newry</div>
         <div class="area-tag">Bangor</div><div class="area-tag">Ballymena</div><div class="area-tag">Craigavon</div><div class="area-tag">Coleraine</div><div class="area-tag">Portadown</div>
         <div class="area-tag">Antrim</div><div class="area-tag">Holywood</div>
     </div>
+    <p style="text-align:center; margin-top: 2rem; color:#94a3b8;">Don't see your area? <a onclick="showSection('contact')" style="color:#60a5fa; cursor:pointer;">Contact us</a> — we may still cover it!</p>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- TESTIMONIALS SECTION (bright text) -->
 <section class="page" id="testimonials">
-    <div style="text-align:center;"><h2 style="color:white;">⭐ What Our <span style="color:#60a5fa;">Clients Say</span></h2><p style="color:#cbd5e1;">Real reviews from real people</p></div>
+    <div style="text-align:center;"><h2 style="color:white;">⭐ What Our <span style="color:#60a5fa;">Clients Say</span></h2><p style="color:#cbd5e1;">Real reviews from real people across Northern Ireland</p></div>
     <div class="testimonials-scroll">
-        <div class="testimonial-card">★★★★★<p>"Absolutely outstanding service! My home has never looked this good."</p><strong>Sarah M.</strong><div>Belfast</div></div>
-        <div class="testimonial-card">★★★★★<p>"Reliable, friendly, and always sparkling results. Eco-friendly products are a big plus!"</p><strong>James R.</strong><div>Lisburn</div></div>
-        <div class="testimonial-card">★★★★★<p>"End of tenancy deep clean was flawless. Got my full deposit back."</p><strong>Aoife K.</strong><div>Derry</div></div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p>"Absolutely outstanding service! My home has never looked this good. Bertha and the team are incredibly thorough and professional."</p>
+            <strong>Sarah M.</strong>
+            <div>Belfast</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p>"Reliable, friendly, and always sparkling results. The eco-friendly products are a big plus!"</p>
+            <strong>James R.</strong>
+            <div>Lisburn</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p>"End of tenancy deep clean was flawless. Got my full deposit back thanks to their meticulous work."</p>
+            <strong>Aoife K.</strong>
+            <div>Derry</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p>"Fast response on WhatsApp, easy booking, and excellent cleaning. Worth every penny."</p>
+            <strong>Ciara N.</strong>
+            <div>Newry</div>
+        </div>
     </div>
 </section>
 
-<!-- ============ FIXED CONTACT SECTION (Full business details) ============ -->
+<!-- CONTACT SECTION (map, socials, address) -->
 <section class="page" id="contact">
     <div style="text-align:center; margin-bottom:2rem;">
         <h2 style="color:white;">📬 Let's <span style="color:#60a5fa;">Connect</span></h2>
         <p style="color:#cbd5e1;">We're one message away from making your space shine</p>
     </div>
-    <div class="grid-cards" style="max-width: 1000px; margin: 0 auto;">
-        <!-- Contact details card -->
+    <div class="grid-cards" style="max-width: 1100px; margin: 0 auto;">
         <div class="glass-card" style="padding: 2rem;">
             <h3 style="color:white; margin-bottom: 1rem;"><i class="fas fa-envelope" style="color:#60a5fa;"></i> Email Us</h3>
-            <p style="color:#cbd5e1; margin: 8px 0;"><strong>General:</strong> info@giftsofsparkle.co.uk</p>
-            <p style="color:#cbd5e1; margin: 8px 0;"><strong>Bookings:</strong> bookings@giftsofsparkle.co.uk</p>
-            <p style="color:#cbd5e1; margin: 8px 0;"><strong>Bertha (direct):</strong> bertha@giftsofsparkle.co.uk</p>
-            
+            <p style="color:#cbd5e1; margin: 8px 0;">📧 <strong>General:</strong> info@giftsofsparkle.co.uk</p>
+            <p style="color:#cbd5e1; margin: 8px 0;">📘 <strong>Bookings:</strong> bookings@giftsofsparkle.co.uk</p>
+            <p style="color:#cbd5e1; margin: 8px 0;">👩‍💼 <strong>Bertha (direct):</strong> bertha@giftsofsparkle.co.uk</p>
             <h3 style="color:white; margin: 1.5rem 0 0.8rem 0;"><i class="fas fa-phone-alt" style="color:#60a5fa;"></i> Phone & WhatsApp</h3>
-            <p style="color:#cbd5e1; margin: 8px 0;"><i class="fas fa-phone"></i> <strong>0772 144 8758</strong></p>
+            <p style="color:#cbd5e1; margin: 8px 0;">📞 <strong>0772 144 8758</strong></p>
             <a href="https://wa.me/447721448758" target="_blank" class="btn btn-primary" style="margin-top: 1rem; display: inline-flex;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            <h3 style="color:white; margin: 1.5rem 0 0.8rem 0;"><i class="fas fa-map-marker-alt" style="color:#60a5fa;"></i> Visit Us</h3>
+            <p style="color:#cbd5e1; margin: 8px 0;">🏢 <strong>12 Umgola Heights, Armagh, BT60 4EH, United Kingdom</strong></p>
+            <h3 style="color:white; margin: 1.5rem 0 0.8rem 0;"><i class="fas fa-globe" style="color:#60a5fa;"></i> Social Media</h3>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;">
+                <a href="https://www.tiktok.com/@giftsofsparkle" target="_blank" class="btn btn-outline" style="padding: 8px 18px;"><i class="fab fa-tiktok"></i> TikTok</a>
+                <a href="https://www.facebook.com/profile.php?id=61590513023331" target="_blank" class="btn btn-outline" style="padding: 8px 18px;"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="https://www.instagram.com/giftsofsparkle1/" target="_blank" class="btn btn-outline" style="padding: 8px 18px;"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+            <p style="color:#cbd5e1; margin-top: 1rem;">🌐 <strong>www.giftsofsparkle.co.uk</strong></p>
         </div>
-        
-        <!-- Why Choose Us card -->
-        <div class="glass-card" style="padding: 2rem;">
-            <h3 style="color:white; margin-bottom: 1rem;">✨ Why Choose Us</h3>
-            <p style="color:#cbd5e1; margin: 12px 0;"><i class="fas fa-check-circle" style="color:#10b981;"></i> Fully trained & vetted staff</p>
-            <p style="color:#cbd5e1; margin: 12px 0;"><i class="fas fa-check-circle" style="color:#10b981;"></i> Eco-friendly & pet-safe products</p>
-            <p style="color:#cbd5e1; margin: 12px 0;"><i class="fas fa-check-circle" style="color:#10b981;"></i> 100% satisfaction guarantee</p>
-            <p style="color:#cbd5e1; margin: 12px 0;"><i class="fas fa-check-circle" style="color:#10b981;"></i> 24h emergency response</p>
-            <p style="color:#cbd5e1; margin: 12px 0;"><i class="fas fa-check-circle" style="color:#10b981;"></i> Fully insured for your peace of mind</p>
-            <p style="margin-top: 20px; font-style: italic; color: #60a5fa; font-weight: 600;">"We don't just clean, we care." ✨</p>
+        <div class="glass-card" style="padding: 1.2rem;">
+            <h3 style="color:white; margin-bottom: 0.8rem; text-align:center;">📍 Our Location</h3>
+            <div style="border-radius: 24px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
+                <iframe 
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=12+Umgola+Heights+Armagh+BT60+4EH&zoom=15&maptype=roadmap"
+                    width="100%" 
+                    height="280" 
+                    style="border:0; display:block;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <p style="color:#cbd5e1; font-size:0.8rem; text-align:center; margin-top: 10px;">12 Umgola Heights, Armagh, BT60 4EH</p>
         </div>
     </div>
-    <!-- Additional note for areas not listed -->
-    <p style="text-align:center; margin-top: 2rem; color:#94a3b8;">Don't see your area? <a onclick="showSection('contact')" style="color:#60a5fa; font-weight:700; cursor:pointer;">Contact us</a> — we may still cover it!</p>
 </section>
 
-<footer class="footer">© 2026 <strong>Gifts of Sparkle</strong> — Premium Cleaning Northern Ireland | Always Sparkling ✨</footer>
+<footer class="footer">
+    © 2026 <strong>Gifts of Sparkle</strong> — Premium Cleaning Northern Ireland | Your Space, Our Passion, <strong>ALWAYS SPARKLING</strong> ✨
+</footer>
+
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -585,18 +705,30 @@
     AOS.init({ duration: 800, once: true, offset: 50 });
     (function() {
         const starsContainer = document.getElementById('stars');
-        for (let i=0;i<200;i++) {
+        for (let i=0;i<220;i++) {
             const star = document.createElement('div');
             star.classList.add('star');
-            const size = Math.random() * 2.5 + 1;
+            const size = Math.random() * 2.8 + 1;
             star.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--duration:${Math.random()*3+2}s;--delay:${Math.random()*4}s;`;
             starsContainer.appendChild(star);
         }
     })();
 
-    function showSection(id) { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
-    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('active'); document.getElementById('mobileOverlay').classList.add('active'); document.body.style.overflow='hidden'; }
-    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('active'); document.getElementById('mobileOverlay').classList.remove('active'); document.body.style.overflow=''; }
+    function showSection(id) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+    }
+    function openMobileMenu() {
+        document.getElementById('mobileMenu').classList.add('active');
+        document.getElementById('mobileOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.remove('active');
+        document.getElementById('mobileOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
     function sendQuoteRequest() {
         const property = document.getElementById('propertySize').value;
         const cleaning = document.getElementById('cleanType').value;
@@ -605,8 +737,18 @@
         const msg = `✨ Gifts of Sparkle Quote Request ✨%0AProperty: ${property}%0ACleaning: ${cleaning}%0AAdd-on: ${addon}%0AFrequency: ${freq}%0A%0APlease provide a personalised quote. Thank you!`;
         window.open(`https://wa.me/447721448758?text=${msg}`, '_blank');
     }
-    window.addEventListener('scroll',()=>{ document.getElementById('backToTop').classList.toggle('visible', window.scrollY>400); document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY>50); });
-    window.showSection=showSection; window.openMobileMenu=openMobileMenu; window.closeMobileMenu=closeMobileMenu; window.sendQuoteRequest=sendQuoteRequest;
+    window.addEventListener('scroll', () => {
+        const btn = document.getElementById('backToTop');
+        const headerEl = document.getElementById('mainHeader');
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+        if (window.scrollY > 50) headerEl.classList.add('scrolled');
+        else headerEl.classList.remove('scrolled');
+    });
+    window.showSection = showSection;
+    window.openMobileMenu = openMobileMenu;
+    window.closeMobileMenu = closeMobileMenu;
+    window.sendQuoteRequest = sendQuoteRequest;
 </script>
 </body>
 </html>
