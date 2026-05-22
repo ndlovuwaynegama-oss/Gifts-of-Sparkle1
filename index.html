@@ -95,6 +95,17 @@
             }
         }
 
+        /* Premium glass effect for cards (optional but adds luxury) */
+        .quote-card,
+        .card-package,
+        .testimonial-card,
+        .card-modern {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
         /* ============ HEADER ============ */
         header {
             position: fixed;
@@ -694,7 +705,7 @@
             font-weight: 600;
         }
 
-        /* ============ QUOTE SECTION ============ */
+        /* ============ QUOTE SECTION (No pricing) ============ */
         .section-header {
             text-align: center;
             margin-bottom: 2.5rem;
@@ -730,7 +741,7 @@
             border-radius: var(--radius-xl);
             padding: 2rem;
             box-shadow: var(--shadow-md);
-            border: 1px solid var(--gray-100);
+            border: 1px solid rgba(255,255,255,0.3);
             transition: var(--transition);
         }
 
@@ -812,16 +823,15 @@
             margin-bottom: 0.5rem;
         }
         .quote-price {
-            font-size: 4.5rem;
+            font-size: 2.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), #2563eb, var(--primary-dark));
+            background: linear-gradient(135deg, var(--primary), #2563eb);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             margin: 0.2rem 0;
             line-height: 1;
-            letter-spacing: -2px;
-            transition: all var(--transition);
+            letter-spacing: -1px;
         }
         .price-breakdown {
             font-size: 0.8rem;
@@ -839,12 +849,13 @@
         }
 
         .card-package {
-            background: white;
+            background: rgba(255,255,255,0.88);
+            backdrop-filter: blur(12px);
             border-radius: var(--radius-xl);
             padding: 2rem 1.6rem;
             transition: all var(--transition-smooth);
             box-shadow: var(--shadow);
-            border: 1px solid var(--gray-100);
+            border: 1px solid rgba(255,255,255,0.5);
             position: relative;
             overflow: hidden;
             text-align: center;
@@ -853,7 +864,7 @@
         .card-package:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-xl);
-            border-color: rgba(29, 78, 216, 0.3);
+            border-color: rgba(29, 78, 216, 0.5);
         }
 
         .card-package.featured {
@@ -895,8 +906,8 @@
             margin-bottom: 0.5rem;
         }
         .card-package .pkg-price {
-            font-size: 2.2rem;
-            font-weight: 900;
+            font-size: 2rem;
+            font-weight: 800;
             color: var(--primary);
             margin: 0.8rem 0;
         }
@@ -931,13 +942,14 @@
             margin-top: 2rem;
         }
         .area-tag {
-            background: white;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(6px);
             border-radius: var(--radius);
             padding: 1rem;
             text-align: center;
             font-weight: 600;
             color: var(--navy);
-            border: 1px solid var(--gray-200);
+            border: 1px solid rgba(255,255,255,0.4);
             transition: var(--transition);
             cursor: default;
             font-size: 0.9rem;
@@ -970,18 +982,19 @@
         .testimonial-card {
             min-width: 320px;
             max-width: 380px;
-            background: white;
+            background: rgba(255,255,255,0.88);
+            backdrop-filter: blur(12px);
             border-radius: var(--radius-xl);
             padding: 1.8rem;
             box-shadow: var(--shadow);
-            border: 1px solid var(--gray-100);
+            border: 1px solid rgba(255,255,255,0.5);
             scroll-snap-align: start;
             flex-shrink: 0;
             transition: var(--transition);
         }
         .testimonial-card:hover {
             box-shadow: var(--shadow-lg);
-            border-color: rgba(29, 78, 216, 0.25);
+            border-color: rgba(29, 78, 216, 0.4);
         }
         .testimonial-card .testimonial-stars {
             color: var(--primary);
@@ -1038,17 +1051,18 @@
         }
 
         .card-modern {
-            background: white;
+            background: rgba(255,255,255,0.88);
+            backdrop-filter: blur(12px);
             border-radius: var(--radius-xl);
             padding: 1.8rem;
             transition: all var(--transition);
             box-shadow: var(--shadow);
-            border: 1px solid var(--gray-100);
+            border: 1px solid rgba(255,255,255,0.5);
         }
         .card-modern:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
-            border-color: rgba(29, 78, 216, 0.2);
+            border-color: rgba(29, 78, 216, 0.3);
         }
 
         /* ============ BACK TO TOP ============ */
@@ -1160,9 +1174,6 @@
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-            .quote-price {
-                font-size: 3.5rem;
-            }
             .section-header h2 {
                 font-size: 2rem;
             }
@@ -1210,9 +1221,6 @@
                 padding: 11px 22px;
                 font-size: 0.85rem;
             }
-            .quote-price {
-                font-size: 3rem;
-            }
             .areas-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1246,12 +1254,12 @@
             </div>
             <div class="menu" id="desktopMenu">
                 <a onclick="showSection('home')">Home</a>
-                <a onclick="showSection('quote')">Instant Quote</a>
+                <a onclick="showSection('quote')">Request Quote</a>
                 <a onclick="showSection('packages')">Packages</a>
                 <a onclick="showSection('areas')">Areas</a>
                 <a onclick="showSection('testimonials')">Reviews</a>
                 <a onclick="showSection('contact')">Contact</a>
-                <a onclick="showSection('quote')" class="btn-nav">✨ Book Now</a>
+                <a onclick="showSection('quote')" class="btn-nav">✨ Request Quote</a>
             </div>
             <div class="hamburger" onclick="openMobileMenu()" aria-label="Open menu">
                 <i class="fas fa-bars"></i>
@@ -1266,15 +1274,15 @@
     <div class="mobile-menu" id="mobileMenu">
         <div class="close-mobile" onclick="closeMobileMenu()">✕</div>
         <a onclick="showSection('home'); closeMobileMenu()">🏠 Home</a>
-        <a onclick="showSection('quote'); closeMobileMenu()">💰 Instant Quote</a>
+        <a onclick="showSection('quote'); closeMobileMenu()">💰 Request Quote</a>
         <a onclick="showSection('packages'); closeMobileMenu()">📦 Packages</a>
         <a onclick="showSection('areas'); closeMobileMenu()">📍 Areas</a>
         <a onclick="showSection('testimonials'); closeMobileMenu()">⭐ Reviews</a>
         <a onclick="showSection('contact'); closeMobileMenu()">📞 Contact</a>
-        <a onclick="showSection('quote'); closeMobileMenu()" class="btn-mobile-book">✨ Book Now</a>
+        <a onclick="showSection('quote'); closeMobileMenu()" class="btn-mobile-book">✨ Request Quote</a>
     </div>
 
-    <!-- ============ HOME SECTION ============ -->
+    <!-- ============ HOME SECTION (UPDATED HERO) ============ -->
     <section class="page active" id="home">
         <div class="hero-wrapper">
             <div class="hero-content">
@@ -1282,10 +1290,10 @@
                     <i class="fas fa-star"></i> Trusted Across Northern Ireland
                 </div>
                 <h1>Exceptional Care.<br><span class="highlight">Pristine Results.</span></h1>
-                <p>Your space, our passion — <strong>ALWAYS SPARKLING</strong>. Premium domestic & commercial cleaning with eco-friendly solutions. Fast, reliable, and professional service you can trust.</p>
+                <p>Your space, our passion — <strong>ALWAYS SPARKLING</strong>. Premium domestic & commercial cleaning with eco-friendly solutions. Fast, reliable, and professional service tailored to your needs.</p>
                 <div class="cta-group">
-                    <a onclick="showSection('quote')" class="btn btn-primary"><i class="fas fa-calculator"></i> Get Instant Quote</a>
-                    <a href="https://wa.me/447721448758" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+                    <a href="https://wa.me/447721448758" target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Request a Quote</a>
+                    <a href="https://wa.me/447721448758" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
                 </div>
                 <div class="stats-row">
                     <div class="stat-badge">
@@ -1342,67 +1350,74 @@
         </div>
     </section>
 
-    <!-- ============ QUOTE SECTION ============ -->
+    <!-- ============ QUOTE SECTION (No pricing, contact card) ============ -->
     <section class="page" id="quote">
         <div class="section-header">
-            <h2>Smart Quote · <span class="blue-accent">Instant Estimate</span></h2>
-            <p class="section-sub">Transparent pricing — tailor your clean and get a real-time total</p>
+            <h2>Request a <span class="blue-accent">Cleaning Quote</span></h2>
+            <p class="section-sub">Tell us what you need and we'll provide a personalised quote</p>
         </div>
         <div class="quote-wrapper">
             <div class="quote-card">
                 <div class="form-group">
                     <label><i class="fas fa-home"></i> Property size</label>
-                    <select id="propertySize" onchange="updateQuoteTotal()">
+                    <select id="propertySize">
                         <option value="0">Select size</option>
-                        <option value="45">Flat / Apartment</option>
-                        <option value="65">Small House (2-3 beds)</option>
-                        <option value="90">Medium House (3-4 beds)</option>
-                        <option value="120">Large House (5+ beds)</option>
-                        <option value="160">Extra Large (6+ beds)</option>
+                        <option value="0">Flat / Apartment</option>
+                        <option value="0">Small House (2-3 beds)</option>
+                        <option value="0">Medium House (3-4 beds)</option>
+                        <option value="0">Large House (5+ beds)</option>
+                        <option value="0">Extra Large (6+ beds)</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label><i class="fas fa-sparkles"></i> Cleaning type</label>
-                    <select id="cleanType" onchange="updateQuoteTotal()">
+                    <select id="cleanType">
                         <option value="0">Select type</option>
-                        <option value="0">Basic Clean</option>
-                        <option value="25">Regular Clean (+£25)</option>
-                        <option value="65">Deep Clean (+£65)</option>
-                        <option value="100">End of Tenancy (+£100)</option>
+                        <option value="0">Regular Clean</option>
+                        <option value="0">Deep Clean</option>
+                        <option value="0">End of Tenancy</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label><i class="fas fa-plus-circle"></i> Add-ons (optional)</label>
-                    <select id="addOnSelect" onchange="updateQuoteTotal()">
+                    <select id="addOnSelect">
                         <option value="0">None</option>
-                        <option value="35">Inside Oven Clean (£35)</option>
-                        <option value="20">Fridge Deep Clean (£20)</option>
-                        <option value="30">Interior Windows (£30)</option>
-                        <option value="40">Carpet Steam (£40)</option>
+                        <option value="0">Inside Oven Clean</option>
+                        <option value="0">Fridge Deep Clean</option>
+                        <option value="0">Interior Windows</option>
+                        <option value="0">Carpet Steam</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label><i class="fas fa-sync-alt"></i> Frequency discount</label>
-                    <select id="frequencyDiscount" onchange="updateQuoteTotal()">
-                        <option value="1">One-off</option>
-                        <option value="0.88">Weekly (12% off)</option>
-                        <option value="0.93">Fortnightly (7% off)</option>
-                        <option value="0.96">Monthly (4% off)</option>
+                    <label><i class="fas fa-sync-alt"></i> Cleaning frequency</label>
+                    <select id="frequencySelect">
+                        <option>One-off</option>
+                        <option>Weekly</option>
+                        <option>Fortnightly</option>
+                        <option>Monthly</option>
                     </select>
                 </div>
+                <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;" onclick="sendDetailedQuoteRequest()">
+                    <i class="fab fa-whatsapp"></i> Send my request
+                </button>
             </div>
+            <!-- REPLACED TOTAL CARD WITH CONTACT CARD -->
             <div class="quote-card total-card">
                 <div class="sparkle-top">✨</div>
-                <p style="font-weight:700;color:var(--navy);">Estimated Total</p>
-                <div class="quote-price" id="estimatedTotal">£0</div>
-                <p class="price-breakdown" id="priceBreakdown">Select options above</p>
-                <a href="#" onclick="sendQuoteToWhatsApp()" class="btn btn-primary" style="width:85%;justify-content:center;"><i class="fab fa-whatsapp"></i> Book This Quote</a>
-                <p style="font-size:0.7rem;margin-top:12px;color:var(--gray-500);">Final price confirmed upon inspection</p>
+                <p style="font-weight:700;color:var(--navy);">Need a Personalised Quote?</p>
+                <div class="quote-price" style="font-size:2.5rem;">Contact Us</div>
+                <p class="price-breakdown">We'll provide a custom quote based on your cleaning needs.</p>
+                <a href="https://wa.me/447721448758" target="_blank" class="btn btn-primary" style="width:85%;justify-content:center;">
+                    <i class="fab fa-whatsapp"></i> Request Quote
+                </a>
+                <p style="font-size:0.7rem;margin-top:12px;color:var(--gray-500);">
+                    Fast response • Professional service • Tailored pricing
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- ============ PACKAGES SECTION ============ -->
+    <!-- ============ PACKAGES SECTION (Custom Quote prices) ============ -->
     <section class="page" id="packages">
         <div class="section-header">
             <h2>Premium <span class="blue-accent">Packages</span></h2>
@@ -1413,7 +1428,7 @@
                 <div class="pkg-icon">🌟</div>
                 <h3>Basic Clean</h3>
                 <p style="color:var(--gray-500);font-size:0.9rem;">Perfect for weekly upkeep</p>
-                <div class="pkg-price">£45<small>+</small></div>
+                <div class="pkg-price">Custom Quote</div>
                 <ul>
                     <li><i class="fas fa-check-circle"></i> Dusting all surfaces</li>
                     <li><i class="fas fa-check-circle"></i> Vacuuming & mopping</li>
@@ -1421,14 +1436,14 @@
                     <li><i class="fas fa-check-circle"></i> Kitchen wipe-down</li>
                     <li><i class="fas fa-check-circle"></i> Rubbish removal</li>
                 </ul>
-                <a onclick="showSection('quote')" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--navy);border-color:var(--primary);">Select Package</a>
+                <a href="https://wa.me/447721448758?text=✨%20Hello%20Gifts%20of%20Sparkle,%20I'd%20like%20a%20quote%20for%20the%20BASIC%20CLEAN%20package." target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--navy);border-color:var(--primary);">Request Quote</a>
             </div>
             <div class="card-package featured">
                 <div class="pkg-badge">MOST POPULAR</div>
                 <div class="pkg-icon">🔥</div>
                 <h3>Regular Clean</h3>
                 <p style="color:var(--gray-500);font-size:0.9rem;">Our most loved service</p>
-                <div class="pkg-price">£65<small>+</small></div>
+                <div class="pkg-price">Custom Quote</div>
                 <ul>
                     <li><i class="fas fa-check-circle"></i> Everything in Basic</li>
                     <li><i class="fas fa-check-circle"></i> All surfaces deep-cleaned</li>
@@ -1436,13 +1451,13 @@
                     <li><i class="fas fa-check-circle"></i> Interior window sills</li>
                     <li><i class="fas fa-check-circle"></i> Cabinet exteriors</li>
                 </ul>
-                <a onclick="showSection('quote')" class="btn btn-primary" style="width:100%;justify-content:center;">Select Package</a>
+                <a href="https://wa.me/447721448758?text=✨%20Hello%20Gifts%20of%20Sparkle,%20I'm%20interested%20in%20your%20REGULAR%20CLEAN%20package.%20Please%20quote." target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">Request Quote</a>
             </div>
             <div class="card-package">
                 <div class="pkg-icon">💎</div>
                 <h3>Deep Clean</h3>
                 <p style="color:var(--gray-500);font-size:0.9rem;">Ultimate sparkle treatment</p>
-                <div class="pkg-price">£120<small>+</small></div>
+                <div class="pkg-price">Custom Quote</div>
                 <ul>
                     <li><i class="fas fa-check-circle"></i> Everything in Regular</li>
                     <li><i class="fas fa-check-circle"></i> Oven & appliance deep clean</li>
@@ -1450,7 +1465,7 @@
                     <li><i class="fas fa-check-circle"></i> Behind furniture</li>
                     <li><i class="fas fa-check-circle"></i> Full sanitisation</li>
                 </ul>
-                <a onclick="showSection('quote')" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--navy);border-color:var(--primary);">Select Package</a>
+                <a href="https://wa.me/447721448758?text=✨%20Hello%20Gifts%20of%20Sparkle,%20Please%20send%20me%20a%20quote%20for%20the%20DEEP%20CLEAN%20service." target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;color:var(--navy);border-color:var(--primary);">Request Quote</a>
             </div>
         </div>
     </section>
@@ -1627,61 +1642,28 @@
             }
         });
 
-        // === QUOTE CALCULATOR ===
-        function updateQuoteTotal() {
-            const property = parseFloat(document.getElementById('propertySize').value) || 0;
-            const cleaning = parseFloat(document.getElementById('cleanType').value) || 0;
-            const addon = parseFloat(document.getElementById('addOnSelect').value) || 0;
-            const discount = parseFloat(document.getElementById('frequencyDiscount').value) || 1;
-
-            const subtotal = property + cleaning + addon;
-            let total = subtotal * discount;
-            if (isNaN(total) || (property === 0 && cleaning === 0 && addon === 0)) total = 0;
-            const rounded = Math.round(total);
-
-            const totalElement = document.getElementById('estimatedTotal');
-            const breakdown = document.getElementById('priceBreakdown');
-
-            totalElement.innerText = '£' + rounded;
-
-            if (total === 0) {
-                breakdown.innerText = 'Select options above';
-            } else if (discount < 1) {
-                const original = Math.round(subtotal);
-                const saved = Math.round(subtotal - total);
-                breakdown.innerText = `Was £${original} · You save £${saved}`;
-            } else {
-                breakdown.innerText = `Base: £${Math.round(subtotal)}`;
-            }
-        }
-
-        function sendQuoteToWhatsApp() {
-            const totalText = document.getElementById('estimatedTotal').innerText;
-            const sizeSelect = document.getElementById('propertySize');
-            const sizeText = sizeSelect.options[sizeSelect.selectedIndex]?.text || "Not selected";
-            const typeSelect = document.getElementById('cleanType');
-            const typeText = typeSelect.options[typeSelect.selectedIndex]?.text || "Not selected";
-            const addonSelect = document.getElementById('addOnSelect');
-            const addonText = addonSelect.options[addonSelect.selectedIndex]?.text || "None";
-            const freqSelect = document.getElementById('frequencyDiscount');
-            const freqText = freqSelect.options[freqSelect.selectedIndex]?.text || "One-off";
-
-            const message =
-                `✨ *Gifts of Sparkle Quote Request* ✨%0A%0A💰 *Total:* ${totalText}%0A🏠 *Property:* ${sizeText}%0A🧹 *Cleaning:* ${typeText}%0A➕ *Add-on:* ${addonText}%0A🔄 *Frequency:* ${freqText}%0A%0A📅 I'd like to book this service. Can you confirm availability?`;
+        // === NEW WHATSAPP QUOTE FUNCTION (replaces old pricing logic) ===
+        function sendDetailedQuoteRequest() {
+            const property = document.getElementById('propertySize').options[document.getElementById('propertySize').selectedIndex]?.text || "Not selected";
+            const cleanType = document.getElementById('cleanType').options[document.getElementById('cleanType').selectedIndex]?.text || "Not selected";
+            const addon = document.getElementById('addOnSelect').options[document.getElementById('addOnSelect').selectedIndex]?.text || "None";
+            const frequency = document.getElementById('frequencySelect').value;
+            const message = `✨ *Gifts of Sparkle - Quote Request* ✨%0A%0A🏠 *Property:* ${property}%0A🧹 *Cleaning type:* ${cleanType}%0A➕ *Add-on:* ${addon}%0A🔄 *Frequency:* ${frequency}%0A%0A💬 I would like a personalised quote based on these preferences. Thank you!`;
             window.open(`https://wa.me/447721448758?text=${message}`, '_blank');
         }
 
-        // === INITIALISE ===
-        document.addEventListener('DOMContentLoaded', () => {
-            updateQuoteTotal();
-        });
+        // Simple requestQuote function (fallback)
+        function requestQuote() {
+            const message = `✨ Hello Gifts of Sparkle,%0A%0AI'm interested in your cleaning services and would like a personalised quote.%0A%0AThank you.`;
+            window.open(`https://wa.me/447721448758?text=${message}`, '_blank');
+        }
 
-        // Expose functions globally
+        // Expose global functions
         window.showSection = showSection;
         window.openMobileMenu = openMobileMenu;
         window.closeMobileMenu = closeMobileMenu;
-        window.updateQuoteTotal = updateQuoteTotal;
-        window.sendQuoteToWhatsApp = sendQuoteToWhatsApp;
+        window.sendDetailedQuoteRequest = sendDetailedQuoteRequest;
+        window.requestQuote = requestQuote;
     </script>
 </body>
 </html>
